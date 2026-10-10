@@ -1,0 +1,17 @@
+{
+  "name": "showpay-html",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "generate:seo": "node seo-generator.cjs",
+    "prebuild": "npm run generate:seo",
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {}
+}

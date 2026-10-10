@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin
+Disallow: /admin-app/
+Allow: /
+
+Sitemap: https://showpayy.com/sitemap.xml

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Primary Title & Description -->
+    <title>ShowPay UI Demo | Mobile Account Interface Preview</title>
+    <meta name="description" content="Explore a mobile-friendly ShowPay interface demo with sample login, dashboard and public help pages. Never enter real account credentials.">
+
+    <!-- Crawling Instructions -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://showpayy.com/" />
+
+    <!-- Google Site Name & Open Graph (For Social & SERP Name) -->
+    <meta property="og:site_name" content="ShowPay">
+    <meta property="og:title" content="ShowPay UI Demo | Mobile Interface Preview">
+    <meta property="og:description" content="Explore a mobile-friendly interface demo using sample credentials only.">
+    <meta property="og:url" content="https://showpayy.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://showpayy.com/showpay-logo.png" />
+    <meta property="og:image:alt" content="ShowPay logo" />
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="ShowPay UI Demo | Mobile Interface Preview" />
+    <meta name="twitter:description" content="Explore a mobile-friendly interface demo using sample credentials only." />
+    <meta name="twitter:image" content="https://showpayy.com/showpay-logo.png" />
+
+    <!-- Logo / Favicon -->
+    <link rel="icon" type="image/png" href="/showpay-logo.png">
+    <link rel="apple-touch-icon" href="/showpay-logo.png">
+
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="/user-app/css/common.css" as="style" />
+    <link rel="preload" href="/user-app/css/login.css" as="style" />
+    <link rel="stylesheet" href="/user-app/css/common.css" />
+    <link rel="stylesheet" href="/user-app/css/login.css" />
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
+    
+    <!-- Advanced SEO Schema Markup (JSON-LD for Google Auto-Discovery) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://showpayy.com/#website",
+          "url": "https://showpayy.com/",
+          "name": "ShowPay",
+          "alternateName": ["Showpay", "Show pay"],
+          "description": "A standalone mobile interface demonstration using sample credentials only."
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://showpayy.com/#organization",
+          "name": "ShowPay",
+          "url": "https://showpayy.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://showpayy.com/showpay-logo.png"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Support",
+            "url": "https://showpayy.com/showpay-support.html"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://showpayy.com/#webpage",
+          "url": "https://showpayy.com/",
+          "name": "ShowPay UI Demo",
+          "description": "Preview a mobile account interface without entering real account credentials.",
+          "isPartOf": { "@id": "https://showpayy.com/#website" },
+          "about": { "@id": "https://showpayy.com/#organization" },
+          "mainEntity": { "@id": "https://showpayy.com/#webapp" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://showpayy.com/#webapp",
+          "name": "ShowPay",
+          "alternateName": ["Showpay", "Show pay"],
+          "url": "https://showpayy.com/",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "description": "A mobile-friendly interface demonstration that accepts sample credentials only."
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://showpayy.com/#faq",
+          "url": "https://showpayy.com/",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the correct ShowPay login URL?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The ShowPay login on this website is available at https://showpayy.com/. Check the full address before entering account details."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use the ShowPay app on mobile?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The ShowPay web app is mobile-friendly and can be opened in a current phone browser without installing an unverified APK file."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I recover my ShowPay password?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Open the ShowPay login and use the Forget Password link shown with the form. Never share a password, OTP or MPIN."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where can I find ShowPay USDT help?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Read the ShowPay USDT guide for checks covering networks, wallet addresses and transaction status before using an available USDT feature."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I reach ShowPay customer support?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Open the ShowPay customer support page for login, deposit status and USDT transaction guidance. Keep your password, OTP and MPIN out of any support message."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1 class="header">Login</h1>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <i data-lucide="phone" class="input-icon"></i>
+          <input
+            type="tel"
+            id="mobile"
+            class="form-control"
+            placeholder="Enter Your Phone Number"
+            maxlength="10"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <i data-lucide="lock" class="input-icon"></i>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+
+        <div class="forgot-password">
+          <a href="/showpay-password-help.html">Forget Password?</a>
+        </div>
+
+        <div
+          id="errorMessage"
+          class="hidden"
+          style="
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+          "
+        ></div>
+
+        <div class="login-btn-container">
+          <button type="submit" class="btn-primary" id="loginBtn">
+            LOG IN
+          </button>
+        </div>
+
+        <p class="login-safety-note">
+          Interface preview only. Do not enter real credentials. No real transactions are authorized here.
+        </p>
+      </form>
+    </div>
+
+    <div class="seo-page-spacer" aria-hidden="true"></div>
+
+    <section class="login-seo-content" aria-labelledby="showpayGuideTitle">
+      <span class="seo-kicker">ShowPay Help Center</span>
+      <h2 id="showpayGuideTitle">ShowPay Guide</h2>
+      <p class="seo-summary">
+        Find clear help for ShowPay login, account access and USDT basics. Choose a guide below without interrupting the clean login experience above.
+      </p>
+
+      <div class="seo-card-grid">
+        <article class="seo-card">
+          <i data-lucide="book-open" aria-hidden="true"></i>
+          <h3>ShowPay Guide</h3>
+          <p>Start with the complete ShowPay help hub and find the right guide for your task.</p>
+          <a href="/showpay-guide.html">Read ShowPay guide</a>
+        </article>
+
+        <article class="seo-card">
+          <i data-lucide="log-in" aria-hidden="true"></i>
+          <h3>Login Help</h3>
+          <p>Review sign-in steps, password help and simple account-access checks.</p>
+          <a href="/showpay-password-help.html">Open login help</a>
+        </article>
+
+        <article class="seo-card">
+          <i data-lucide="circle-dollar-sign" aria-hidden="true"></i>
+          <h3>USDT Guide</h3>
+          <p>Understand network matching, wallet-address checks and transaction status.</p>
+          <a href="/showpay-usdt.html">Read USDT guide</a>
+        </article>
+      </div>
+
+      <nav class="seo-links" aria-label="More ShowPay help">
+        <a href="/how-to-use-showpay.html">How to use ShowPay</a>
+        <a href="/showpay-support.html">ShowPay support</a>
+        <a href="/showpay-apk.html">App access guide</a>
+      </nav>
+    </section>
+
+    <!-- Limit Popup -->
+    <div
+      id="limitPopup"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      "
+    ></div>    <script type="module" src="/user-app/js/auth/login.js"></script>
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      window.addEventListener("pageshow", () => {
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+      });
+
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
+

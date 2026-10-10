@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1126">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="index, follow">
+  <title>ShowPay — Login, Registration &amp; App Guide | showpayy.com</title>
+  <meta name="description" content="Explore the ShowPay app, sign in, find registration and app access, and understand the deposit, UPI, team and profile screens.">
+  <link rel="canonical" href="https://showpayy.com/homepages">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://showpayy.com/homepages">
+  <meta property="og:title" content="ShowPay — Login, Registration &amp; App Guide">
+  <meta property="og:description" content="Your guide to ShowPay login, app access, deposits, UPI and account screens.">
+  <meta property="og:image" content="https://showpayy.com/assets/showpay-logo.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/showpay-logo.jpeg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{font-family:'Nunito',sans-serif;color:#fff;background:#03050d;--pink:#ef476f;--glow:#ff758c;--muted:#94a3b8;--line:rgba(255,255,255,.06)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100dvh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 20% 30%,#ef476f1f,transparent 30%),radial-gradient(circle at 80% 70%,#2a3b7a33,transparent 30%);background-attachment:fixed}
+    a{color:inherit}button{font:inherit;cursor:pointer}img{max-width:100%;height:auto}a,button,summary{ -webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--glow);outline-offset:4px} [hidden]{display:none!important}
+    .skip{position:fixed;left:20px;top:-100px;z-index:200;background:#fff;color:#0b1126;padding:12px}.skip:focus{top:16px}
+    .phone{width:100%;max-width:410px;height:92vh;background:#0b1126;border:8px solid #151d38;border-radius:40px;box-shadow:0 25px 60px #000c,0 0 30px #ef476f1a;display:flex;flex-direction:column;position:relative;overflow:hidden}
+    .topbar{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;padding:18px 24px;position:relative;z-index:10;background:#0b1126b3;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff0d}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand img{width:38px;height:38px;border-radius:12px;object-fit:cover;box-shadow:0 4px 10px #0005}.brand span{font-size:20px;font-weight:800;background:linear-gradient(90deg,#fff,var(--glow));background-clip:text;-webkit-background-clip:text;color:transparent}
+    .menu-button{border:0;background:none;display:flex;flex-direction:column;gap:6px;padding:4px;min-height:38px;justify-content:center}.menu-button span{width:26px;height:3px;display:block;border-radius:4px;background:linear-gradient(90deg,var(--pink),var(--glow));transition:transform .2s,opacity .2s}.menu-button[aria-expanded=true] span:first-child{transform:translateY(9px) rotate(45deg)}.menu-button[aria-expanded=true] span:nth-child(2){opacity:0}.menu-button[aria-expanded=true] span:last-child{transform:translateY(-9px) rotate(-45deg)}
+    .menu{position:absolute;right:20px;top:75px;width:210px;max-height:calc(92vh - 110px);overflow:auto;background:#151d38f5;border:1px solid var(--line);border-radius:16px;box-shadow:0 15px 35px #0008;backdrop-filter:blur(10px)}.menu a{display:block;padding:15px 22px;font-size:15.2px;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}.menu a:last-child{border-bottom:0}.menu a:hover{background:#ef476f1a;color:var(--glow)}
+    main{flex:1;min-height:0;overflow:auto;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#ef476f80 transparent;padding-bottom:70px}main::-webkit-scrollbar{width:5px}main::-webkit-scrollbar-thumb{background:#ef476f80;border-radius:10px}section[id]{scroll-margin-top:18px}
+    .hero{text-align:center;padding:50px 24px 40px;position:relative}.hero:before{content:'';position:absolute;left:50%;top:30px;transform:translateX(-50%);width:140px;height:140px;background:radial-gradient(circle,#ef476f33,transparent 70%);pointer-events:none}.hero-icon{width:95px;height:95px;border-radius:25px;margin-bottom:25px;border:2px solid #ffffff0d;box-shadow:0 12px 30px #ef476f4d;position:relative}.hero h1{font-size:27.2px;font-weight:800;line-height:1.35;margin-bottom:15px}.hero p{font-size:15.2px;line-height:1.6;color:var(--muted);margin-bottom:35px}.actions{display:flex;gap:15px;margin-bottom:15px}.button{flex:1;display:flex;justify-content:center;align-items:center;padding:15px;border-radius:14px;font-size:15.2px;font-weight:700;text-decoration:none;line-height:1.4;transition:transform .2s,background .2s}.primary{color:#fff;background:linear-gradient(135deg,var(--pink),var(--glow));box-shadow:0 6px 20px #ef476f59;border:1px solid transparent}.primary:hover{transform:translateY(-2px)}.outline{color:var(--glow);background:#ffffff08;border:1px solid #ef476f66}.outline:hover{background:#ef476f14}.download{background:#ffffff1a;border:1px solid #fff3;color:#fff}
+    .card{margin:20px 18px;padding:26px 22px;background:linear-gradient(160deg,#131a35,#0d1226);border:1px solid #ffffff08;border-left:4px solid var(--pink);border-radius:24px;box-shadow:0 10px 25px #0004;position:relative;overflow:hidden}.card:before{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,#ef476f0d,transparent 70%);pointer-events:none}.card h2{display:flex;align-items:center;gap:8px;font-size:19.2px;line-height:1.4;font-weight:800;margin-bottom:18px}.card h2:before{content:'';width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--glow);box-shadow:0 0 10px var(--pink)}.card h3{font-size:16px;color:var(--glow);margin:22px 0 10px}.card p{font-size:14.72px;color:var(--muted);line-height:1.75;margin-bottom:15px}.card p:last-child{margin-bottom:0}.card p a,.answer a{color:var(--glow);text-underline-offset:3px}.screen{display:block;width:100%;border:1px solid #ffffff14;border-radius:12px;box-shadow:0 8px 20px #0005;margin:15px 0 22px}
+    .contents{background:linear-gradient(160deg,#1a2245,#111833);border-left:1px solid #ffffff08;border-top:4px solid var(--pink)}.guide-links{display:grid;gap:12px;margin-top:15px}.guide-link{display:flex;align-items:center;padding:14px 18px;border-radius:14px;background:#0004;border:1px solid #ffffff0a;text-decoration:none;transition:background .2s}.guide-link:hover{background:#ef476f1f;border-color:#ef476f66}.guide-link>span{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;margin-right:15px;border-radius:10px;background:#ffffff0d;font-size:20.8px}.guide-link b{font-size:15.2px;font-weight:700}
+    .steps{list-style:none;margin:15px 0 25px}.steps li{position:relative;padding-left:28px;margin-bottom:12px;color:var(--muted);font-size:14.72px;line-height:1.6}.steps li:before{content:'✨';position:absolute;left:0;top:-2px;font-size:14px}.steps strong{color:#fff}.copy-widget{display:flex;align-items:center;justify-content:space-between;gap:8px;width:fit-content;max-width:100%;padding:8px 14px;margin-top:10px;background:#0006;border:1px solid #ffffff1a;border-radius:10px}.copy-widget code{color:var(--glow);font-size:16px;font-weight:700;letter-spacing:1px;overflow-wrap:anywhere}.copy-widget button{padding:6px 14px;background:var(--pink);border:0;border-radius:6px;color:#fff;font-size:12.8px;font-weight:700}.copy-status{font-size:12px!important;margin-top:8px}
+    .tiles{display:grid;gap:15px;margin-top:15px}.tile{padding:20px;border:1px solid #ffffff0d;border-radius:16px;background:#0004}.tile h3{font-size:17.6px;margin:0 0 5px}.tile p{font-size:14.4px;margin:0}.green{color:#10b981!important}.blue{color:#3b82f6!important}.amber{color:#f59e0b!important}.tile .steps{margin-bottom:0}.positive li:before{content:'✅'}.notes li:before{content:'•';font-size:20px;color:#f59e0b}
+    .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:20px}.stat{background:#0004;border:1px solid #ffffff0d;border-radius:12px;text-align:center;padding:15px;display:flex;flex-direction:column;gap:5px}.stat dt{font-size:13.6px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}.stat dd{font-size:17.6px;font-weight:800;color:var(--glow);overflow-wrap:anywhere}
+    .faq{display:grid;gap:12px;margin-top:20px}.faq details{background:#0004;border:1px solid #ffffff0d;border-radius:12px;overflow:hidden}.faq summary{list-style:none;position:relative;cursor:pointer;padding:16px 42px 16px 20px;font-size:15.2px;font-weight:700;line-height:1.45}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:'+';position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--pink);font-size:22.4px}.faq details[open] summary{background:#ef476f1a;color:var(--glow)}.faq details[open] summary:after{content:'−'}.answer{padding:15px 20px 20px;color:var(--muted);font-size:14.4px;line-height:1.6;border-top:1px solid #ffffff08}
+    footer{padding:25px 24px;text-align:center;color:var(--muted);font-size:12.8px;line-height:1.6}footer p+ p{margin-top:8px}footer a{color:var(--glow);text-decoration:none}.footnote{font-size:12px!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:480px){body{background:#0b1126}.phone{max-width:none;height:100dvh;border:0;border-radius:0;box-shadow:none}.card{margin:16px 12px;border-radius:20px}.menu{max-height:calc(100dvh - 100px)}}
+    @media(max-width:350px){.hero{padding-inline:18px}.topbar{padding-inline:18px}.actions{gap:10px}.button{padding:14px 10px;font-size:14px}.card{padding:24px 18px}.guide-link{padding:12px}.guide-link>span{margin-right:10px}.copy-widget{padding:8px;gap:5px}.copy-widget code{font-size:14px}}
+    @media(prefers-reduced-motion:reduce){main{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="phone">
+    <header class="topbar">
+      <a class="brand" href="#hero" aria-label="ShowPay home"><img src="/assets/showpay-logo.jpeg" alt="" width="38" height="38"><span>ShowPay</span></a>
+      <button class="menu-button" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navigation"><span></span><span></span><span></span></button>
+      <nav class="menu" id="navigation" aria-label="Main navigation" hidden>
+        <a href="#hero">Home</a><a href="#about">About ShowPay</a><a href="#register">Registration &amp; Login</a><a href="#support">Contact &amp; Support</a><a href="#app-details">App Access</a><a href="#faq">Help &amp; FAQ</a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero" id="hero">
+        <img class="hero-icon" src="/assets/showpay-logo.jpeg" alt="ShowPay App" width="95" height="95" fetchpriority="high">
+        <h1>ShowPay - The Easiest Way to Trade and Earn</h1>
+        <p>Get to know the ShowPay app with this simple guide. Explore registration, account access, deposits, payment tools and team screens, with everything you need to find your way around.</p>
+        <div class="actions"><a class="button primary" href="/">Open Demo</a><a class="button outline" href="/about-showpay.html">Learn More</a></div>
+        <div class="actions"><a class="button download" href="/showpay-apk">⬇ Download ShowPay App</a></div>
+      </section>
+      <section class="card" id="about">
+        <h2>Discover the ShowPay App</h2>
+        <p>ShowPay brings account access, INR and USDT screens, payment tools and team activity into a mobile interface. This guide helps you recognise each screen and locate the options already available in the app.</p>
+        <p>Start with the login button above to open your account at showpayy.com. The web version works in your phone's browser, so you can view your account without installing a separate app.</p>
+        <img class="screen" src="/assets/homepages/home.webp" alt="ShowPay home screen with USDT ratio, balance, top-up and team overview" width="800" height="1525" loading="lazy" decoding="async">
+        <p>The home screen groups your balance, received payments, top-up activity and team commission. It also displays a USDT conversion ratio and shortcuts to payment tools. Values in these screenshots are examples; your account shows your current information.</p>
+      </section>
+      <section class="card contents" id="guide">
+        <h2>Your ShowPay Guide</h2>
+        <div class="guide-links">
+          <a class="guide-link" href="#register"><span aria-hidden="true">🔐</span><b>Registration & Login</b></a>
+          <a class="guide-link" href="#profile"><span aria-hidden="true">👤</span><b>Your Profile & Settings</b></a>
+          <a class="guide-link" href="#deposits"><span aria-hidden="true">💰</span><b>INR & USDT Deposits</b></a>
+          <a class="guide-link" href="#payments"><span aria-hidden="true">🔄</span><b>UPI & Payment Tools</b></a>
+          <a class="guide-link" href="#bonus"><span aria-hidden="true">🚀</span><b>Team & Rewards</b></a>
+          <a class="guide-link" href="#support"><span aria-hidden="true">🎧</span><b>Help & Contact</b></a>
+          <a class="guide-link" href="#features"><span aria-hidden="true">✨</span><b>Explore the Features</b></a>
+          <a class="guide-link" href="#pros-cons"><span aria-hidden="true">⚖️</span><b>Useful Things to Know</b></a>
+          <a class="guide-link" href="#app-details"><span aria-hidden="true">📱</span><b>App & Browser Access</b></a>
+          <a class="guide-link" href="#faq"><span aria-hidden="true">❓</span><b>Questions & Answers</b></a>
+        </div>
+      </section>
+      <section class="card" id="register">
+        <h2>Get Started with ShowPay</h2>
+        <p>New to the app? Use Create Account to reach the registration destination linked from the existing ShowPay login page. If you already have an account, choose Login Securely.</p>
+        <h3>Creating your account</h3>
+        <img class="screen" src="/assets/homepages/registration.webp" alt="Example ShowPay registration form" width="800" height="1224" loading="lazy" decoding="async">
+        <p>The registration screen collects your account details. Complete the fields shown by the registration service and review them before submitting.</p>
+        <ul class="steps">
+          <li><strong>Open registration.</strong> Select Create Account at the top of this page.</li>
+          <li><strong>Enter your phone number.</strong> Use the number you want to associate with your account.</li>
+          <li><strong>Choose a password.</strong> Keep your sign-in details private.</li>
+          <li><strong>Check the invitation code.</strong> The existing registration link on showpayy.com uses the code below.</li>
+        </ul>
+        <div class="copy-widget"><code id="invite-code">2invite5p6</code><button type="button" data-copy="invite-code">Copy</button></div>
+        <p class="copy-status" aria-live="polite"></p>
+        <h3>Accessing an existing account</h3>
+        <img class="screen" src="/assets/homepages/login.webp" alt="ShowPay sign-in screen with phone number and password fields" width="800" height="1365" loading="lazy" decoding="async">
+        <ul class="steps"><li><strong>Open the login page</strong> using Login Securely.</li><li><strong>Enter your details</strong> in the phone-number and password fields.</li><li><strong>Need help signing in?</strong> Use the password-help option available on the login screen.</li></ul>
+        <a class="button primary" href="/">Go to ShowPay Login</a>
+      </section>
+      <section class="card" id="profile">
+        <h2>Your Profile &amp; Account</h2>
+        <p>Open the Me section to find profile information, account activity and settings in one place. This is also where you can locate the contact panel.</p>
+        <img class="screen" src="/assets/homepages/profile.webp" alt="ShowPay profile with account balance and settings" width="800" height="1554" loading="lazy" decoding="async">
+        <h3>Find the setting you need</h3>
+        <ul class="steps"><li><strong>Profile details:</strong> View your account identifier and profile information.</li><li><strong>Account history:</strong> Recharge History and Token History organise previous activity.</li><li><strong>Bank Card:</strong> Locate the payment details associated with your account.</li><li><strong>Language and security:</strong> Find language preferences and Google Authentication options.</li></ul>
+        <p>Use the Top up shortcut to reach the deposit screen. For a question about your account, open the contact option inside the app.</p>
+      </section>
+      <section class="card" id="deposits">
+        <h2>Explore the Deposit Screens</h2>
+        <p>The deposit area separates INR and USDT. Choose the relevant tab in your account to see the available options, current amounts and any applicable conditions.</p>
+        <h3>The INR view</h3>
+        <img class="screen" src="/assets/homepages/inr.webp" alt="ShowPay INR deposit screen with order amounts and filters" width="800" height="1566" loading="lazy" decoding="async">
+        <p>The INR screenshot contains order rows, filters and Buy controls. Income and Quota are shown alongside each order amount. Read the details in your account before selecting an order.</p>
+        <h3>The USDT view</h3>
+        <img class="screen" src="/assets/homepages/usdt.webp" alt="Example USDT deposit interface in ShowPay" width="800" height="1211" loading="lazy" decoding="async">
+        <p>The USDT screen presents deposit information separately from INR. For your own deposit details, open your signed-in account; the image here is a visual example.</p>
+        <p>Find more information in the <a href="/showpay-usdt">ShowPay USDT guide</a>.</p>
+      </section>
+      <section class="card" id="payments">
+        <h2>UPI &amp; Payment Screens</h2>
+        <p>Payment tools bring together the account and channel options shown by ShowPay. Open the relevant tool from your home screen to view the choices available to your account.</p>
+        <h3>Adding a payment account</h3>
+        <img class="screen" src="/assets/homepages/upi.webp" alt="ShowPay payment account setup screen and supported channel choices" width="800" height="1500" loading="lazy" decoding="async">
+        <p>The illustrated setup screen organises the process into a sequence, with channel selection followed by phone and verification details. Follow the prompts in your own account.</p>
+        <h3>Viewing payment activity</h3>
+        <img class="screen" src="/assets/homepages/payments.webp" alt="ShowPay sent-payment tool and payment status interface" width="800" height="737" loading="lazy" decoding="async">
+        <p>Use the payment screen to review the status of an order and the details associated with it. Your bank or UPI app provides the record of money actually received or sent.</p>
+      </section>
+      <section class="card" id="bonus">
+        <h2>Your Team Dashboard</h2>
+        <p>The Team screen presents network activity and reward summaries. Its separate panels make it easier to distinguish commission, recharge activity and weekly totals.</p>
+        <img class="screen" src="/assets/homepages/team.webp" alt="ShowPay team overview with commission and weekly quota panels" width="800" height="994" loading="lazy" decoding="async">
+        <h3>Reading the team summary</h3>
+        <ul class="steps"><li><strong>Commission:</strong> View the figure recorded in your account.</li><li><strong>Team Recharge:</strong> Find the recharge summary for your team.</li><li><strong>Weekly Quota:</strong> A and A+B appear as separate totals.</li><li><strong>Last Week:</strong> Compare the previous period using the screen's controls.</li></ul>
+        <h3>Finding your invitation</h3>
+        <p>Open the invitation option in your own team screen to access your personal details. The registration link used by this website includes the code below.</p>
+        <div class="copy-widget"><code id="team-code">2invite5p6</code><button type="button" data-copy="team-code">Copy Code</button></div>
+        <p class="copy-status" aria-live="polite"></p>
+      </section>
+      <section class="card" id="support">
+        <h2>Contact &amp; Account Help</h2>
+        <p>Open the contact option from your profile to see the support channels provided inside your account.</p>
+        <img class="screen" src="/assets/showpay-contact-sheet.jpeg" alt="Contact panel shown over the ShowPay profile screen" loading="lazy" decoding="async" width="736" height="1600">
+        <p>For sign-in help, return to the login page and use its available account-help controls.</p>
+        <a class="button outline" href="/">Open ShowPay</a>
+      </section>
+      <section class="card" id="features">
+        <h2>Inside the ShowPay App</h2>
+        <p>A quick overview of the tools shown throughout this guide.</p>
+        <div class="tiles"><article class="tile"><h3>⚡ Account at a glance</h3><p>Home brings your balance and recent activity together.</p></article><article class="tile"><h3 class="green">💰 Deposit options</h3><p>Separate INR and USDT views help you find the relevant information.</p></article><article class="tile"><h3 class="blue">🤝 Team overview</h3><p>Commission, recharge and weekly quota panels share one screen.</p></article><article class="tile"><h3 class="amber">🛡️ Account settings</h3><p>Profile, language and authentication controls are grouped in Me.</p></article></div>
+      </section>
+      <section class="card" id="pros-cons">
+        <h2>A Few Useful Details</h2>
+        <p>Keep these points in mind as you explore the app.</p>
+        <div class="tiles"><article class="tile"><h3 class="green">🌟 Easy to find</h3><ul class="steps positive"><li><strong>Browser access:</strong> Sign in through showpayy.com.</li><li><strong>Screen shortcuts:</strong> Move between home, deposits, team and profile.</li><li><strong>Account records:</strong> Review history from your profile menu.</li></ul></article><article class="tile"><h3 class="amber">💡 Before you continue</h3><ul class="steps notes"><li><strong>Current values:</strong> Check your signed-in account for rates and conditions.</li><li><strong>Screen examples:</strong> Images here do not show your personal balance.</li><li><strong>App access:</strong> The app guide explains the currently available browser option.</li></ul></article></div>
+      </section>
+      <section class="card" id="app-details">
+        <h2>ShowPay App Access</h2>
+        <p>Use ShowPay from a current mobile or desktop browser. The app-access page on this website has more information about the web version and APK availability.</p>
+        <dl class="stats"><div class="stat"><dt>Access</dt><dd>Web App</dd></div><div class="stat"><dt>Devices</dt><dd>Phone &amp; PC</dd></div><div class="stat"><dt>Browser</dt><dd>Modern</dd></div><div class="stat"><dt>Sign In</dt><dd>Online</dd></div></dl>
+        <div class="actions" style="margin-top:20px;margin-bottom:0"><a class="button download" href="/showpay-apk">View App Access</a></div>
+      </section>
+      <section class="card" id="faq">
+        <h2>ShowPay Questions &amp; Answers</h2>
+        <p>Quick help with the pages and options covered in this guide.</p>
+        <div class="faq">
+          <details><summary>Where do I sign in?</summary><div class="answer">Use Login Securely to open <a href="/">showpayy.com</a>, then enter your account details.</div></details>
+          <details><summary>How do I open registration?</summary><div class="answer">Select Create Account at the top. It opens the registration link already used by this website.</div></details>
+          <details><summary>What if I forget my password?</summary><div class="answer">Open the login page and use its password-help option to see the available recovery steps.</div></details>
+          <details><summary>Where are the deposit options?</summary><div class="answer">Open Top up or the deposit area in your account. INR and USDT are presented as separate tabs.</div></details>
+          <details><summary>Are these my account balances?</summary><div class="answer">No. The images illustrate the interface. Sign in to see the information associated with your own account.</div></details>
+          <details><summary>Where can I find my team activity?</summary><div class="answer">Open Team to view the commission, recharge and weekly quota panels recorded in your account.</div></details>
+          <details><summary>How do I find account settings?</summary><div class="answer">The Me section contains profile, history, bank-card, language and authentication options.</div></details>
+          <details><summary>Where is the app download?</summary><div class="answer">The <a href="/showpay-apk">app-access guide</a> explains the browser version. This website does not currently host a direct APK installer.</div></details>
+          <details><summary>How do I contact support?</summary><div class="answer">Use the contact option inside your signed-in profile to see the support destinations provided there.</div></details>
+        </div>
+      </section>
+      <footer><p>ShowPay App Guide<br>© 2026 ShowPay · showpayy.com</p><p><a href="#hero">Back to top ↑</a> &nbsp; · &nbsp; <a href="/">Login to ShowPay</a></p></footer>
+    </main>
+  </div>
+  <script>
+    'use strict';
+    const menuButton = document.getElementById('menu-toggle');
+    const navigation = document.getElementById('navigation');
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      navigation.hidden = !open;
+    }
+    menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+    navigation.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+    document.addEventListener('click', event => { if (!event.target.closest('.topbar')) setMenu(false); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && !navigation.hidden) { setMenu(false); menuButton.focus(); } });
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const code = document.getElementById(button.dataset.copy);
+        const status = button.closest('.copy-widget').nextElementSibling;
+        const original = button.textContent;
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          button.textContent = 'Copied!';
+          status.textContent = 'Invitation code copied.';
+          window.setTimeout(() => { button.textContent = original; }, 2000);
+        } catch {
+          const range = document.createRange();
+          range.selectNodeContents(code);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Code selected. Copy it using your device’s copy option.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
