@@ -20,7 +20,7 @@ for (const route of ['/privacy-policy.html', '/terms.html']) {
 worker = worker.replace(/const sitemap = (.+);\n/, `const sitemap = ${JSON.stringify(sitemap)};\n`);
 fs.writeFileSync(workerPath, worker);
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
-fs.writeFileSync(path.join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /admin-app/\nDisallow: /api/\nDisallow: /home\nDisallow: /user-app/\nDisallow: /complete\n\nSitemap: https://showpayy.com/sitemap.xml\n');
+fs.writeFileSync(path.join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /admin-app/\nDisallow: /api/\nDisallow: /home$\nDisallow: /user-app/\nDisallow: /complete$\n\nSitemap: https://showpayy.com/sitemap.xml\n');
 const routesPath = path.join(dist, '_routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
 routes.include = [...new Set([...routes.include, '/', '/privacy-policy.html', '/terms.html'])];
