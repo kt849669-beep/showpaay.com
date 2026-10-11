@@ -1,3 +1,5 @@
+/landing-page.html / 301
+/index.html / 301
 # /home → home page
 /home                       /user-app/pages/home.html         200
 # /admin → admin login
@@ -11,7 +13,7 @@
 /showpay-guide              /showpay-guide.html               200
 
 # /login → root
-/login                      /                                 301
+/login                      /user-app/pages/login.html       200
 
 # 404 fallback
 /*                          /404.html                         404
