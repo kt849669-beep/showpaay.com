@@ -1,56 +1,21 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("adminLoginForm");
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const errorMsg = document.getElementById("errorMsg");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('adminLoginForm');
+  const error = document.getElementById('errorMsg');
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const password = document.getElementById('password');
     try {
-      const { data } = await localDb
-        .from("admin_settings")
-        .select("*")
-        .eq("admin_email", email)
-        .eq("admin_password", password)
-        .limit(1);
-
-      if (data && data.length > 0) {
-        const sessionToken = crypto.randomUUID();
-        const deviceInfo = navigator.userAgent;
-        
-        await localDb
-          .from("admin_sessions")
-          .insert({ token: sessionToken, device_info: deviceInfo });
-
-        localStorage.setItem("showpay_admin_session_token", sessionToken);
-        window.location.href = "/admin-app/pages/dashboard.html";
-        return;
-      }
-    } catch (err) {
-      console.error("Unable to read administrator settings:", err);
-    }
-
-    if (email === "admin@showpay.com" && password === "admin@0123") {
-      const sessionToken = crypto.randomUUID();
-      const deviceInfo = navigator.userAgent;
-      await localDb
-          .from("admin_sessions")
-          .insert({ token: sessionToken, device_info: deviceInfo });
-      localStorage.setItem("showpay_admin_session_token", sessionToken);
-      window.location.href = "/admin-app/pages/dashboard.html";
-    } else {
-      errorMsg.textContent = "Invalid credentials";
-      errorMsg.classList.remove("hidden");
-      errorMsg.style.display = "block";
-      errorMsg.style.color = "#ef4444";
-      errorMsg.style.textAlign = "center";
-      errorMsg.style.marginBottom = "16px";
-      errorMsg.style.fontSize = "14px";
+      const response = await fetch('/api/admin/login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: document.getElementById('email').value.trim(), password: password.value }) });
+      password.value = '';
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error?.message || 'Sign in failed');
+      localStorage.removeItem('showpay_admin_session_token');
+      location.href = '/admin-app/pages/dashboard.html';
+    } catch (failure) {
+      password.value = '';
+      error.textContent = failure.message;
+      error.classList.remove('hidden');
+      error.style.display = 'block';
     }
   });
 });
