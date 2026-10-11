@@ -38,3 +38,11 @@ This file serves as memory for AI agents. When a new conversation starts, read t
 - Rollback target before this release: Pages deployment `559486ab-45e7-40ff-af4b-91af8980f85c`, source commit `1958bc9870149d331f5813552fad1f1ea91c4754`.
 - Public-login build optimization in `scripts/optimize-public-login.cjs` inlines existing styles, loads fonts without blocking paint and defers icon initialization until DOMContentLoaded. It enables zoom and adds accessible field names and scoped contrast fixes. Existing account JavaScript and admin documents are unchanged. New PageSpeed scores require a deployed audit; no 100-point result has been verified.
 - Owner-supplied recovery URL: https://app-web.showpayweb.com/forgetPassword (automated HTTP check returned 403; account recovery itself is unverified). Public guide/deposit pages link to YouTube video Rl8mR5YT2E4 and Instagram post DYfki7GTcSa. These are external links, with no iframe or social-profile schema claims.
+
+## GoDaddy homepage release (October 11, 2026)
+- Homepage uses landing-page.html from the owner-selected localhost design, published only through GoDaddy.
+- deploy-landing.cjs finalizes the built homepage, public policies, sitemap and robots after the existing guide build.
+- Account login is /login; its previous below-form SEO copy was removed. The login page is noindex; the public homepage is canonical https://showpayy.com/.
+- Static screenshot examples and calculator use a reference rate, not live quotes or guaranteed returns.
+- Existing public guides stay reachable to preserve their URLs. Search Console submission requires the owner's verified property.
+

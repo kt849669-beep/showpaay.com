@@ -10,7 +10,7 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "start": "node scripts/node-server.mjs",
     "build": "vite build",
-    "postbuild": "node scripts/cloudflare-seo-build.cjs",
+    "postbuild": "node scripts/cloudflare-seo-build.cjs && node deploy-landing.cjs",
     "preview": "vite preview",
     "pretest:seo": "npm run generate:seo",
     "test:seo": "node tests/seo-audit.mjs",
