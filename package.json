@@ -3,17 +3,22 @@
   "private": true,
   "version": "3.0.0",
   "type": "module",
+  "main": "scripts/node-server.mjs",
   "scripts": {
     "generate:seo": "node seo-generator.cjs",
     "prebuild": "npm run generate:seo",
-    "dev": "node server.mjs",
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "start": "node scripts/node-server.mjs",
     "build": "vite build",
+    "postbuild": "node scripts/cloudflare-seo-build.cjs",
     "preview": "vite preview",
-    "start": "node server.mjs",
-    "test": "node --test server.test.mjs"
+    "pretest:seo": "npm run generate:seo",
+    "test:seo": "node tests/seo-audit.mjs",
+    "test:seo-monitor": "node --test --test-isolation=none seo-monitor/tests/monitor.test.mjs",
+    "monitor:seo": "node seo-monitor/run.mjs",
+    "test:hosting": "node --test tests/node-hosting.test.mjs tests/orbit-mysql.test.mjs"
   },
   "dependencies": {
-    "express": "^5.3.0",
     "mysql2": "^3.24.5",
     "vite": "^6.2.3"
   },

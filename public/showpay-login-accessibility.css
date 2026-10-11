@@ -1,0 +1,11 @@
+/* Scope visual accessibility fixes to the public login, never the dashboard/admin. */
+.showpay-public-main .header,
+.showpay-public-main .forgot-password a,
+.showpay-public-main .register-link-container a,
+.showpay-public-main .seo-card a { color: #0056b3; }
+.showpay-public-main .form-control::placeholder { color: #606875; opacity: 1; }
+.showpay-public-main .input-icon { color: #606875; }
+.showpay-public-main .btn-primary { background-color: #0066cc; }
+.showpay-public-main .btn-primary:hover { background-color: #0056b3; }
+.showpay-public-main #errorMessage { color: #b42318 !important; }
+.showpay-public-main .form-control:focus-visible { outline: 2px solid #0056b3; outline-offset: 3px; }

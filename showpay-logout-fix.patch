@@ -1,0 +1,46 @@
+From 1fc49e312fc7d078d5bf07c96ef64290f14073f8 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 14 Aug 2026 17:23:21 +0000
+Subject: [PATCH] fix(auth): send logout back to the login homepage at /
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+home.js logout() redirected to ../pages/login.html, which resolves to
+/pages/login.html — a route that does not exist. It only appeared to
+work because the old 404 page auto-redirected everything to /. That
+auto-redirect was just removed (it read as a sneaky redirect to Google),
+so closing the MPIN/video/telegram popups now landed on the not-found
+page instead of the login screen.
+
+Point logout() straight at "/", the canonical login view: the full
+login form on the first screen with the ShowPay guides below on scroll.
+No workflow change — the MPIN -> success -> video -> telegram chain is
+untouched; only its final destination is fixed.
+---
+ user-app/js/home.js | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/user-app/js/home.js b/user-app/js/home.js
+index a4643c1..9ebc65a 100644
+--- a/user-app/js/home.js
++++ b/user-app/js/home.js
+@@ -289,8 +289,13 @@ document.addEventListener("DOMContentLoaded", async () => {
+   function logout() {
+     // Session Clear
+     sessionStorage.removeItem("showpay_session");
+-    // Redirect to Login Page
+-    window.location.href = "../pages/login.html";
++    // Redirect to the login homepage ("/"). This is the canonical login view:
++    // the full login form on the first screen with the ShowPay guides below on
++    // scroll. The old relative path ../pages/login.html resolved to
++    // /pages/login.html, which does not exist and only "worked" because the old
++    // 404 page auto-redirected to /. That auto-redirect was removed (it looked
++    // like a sneaky redirect to Google), so the logout target must be explicit.
++    window.location.href = "/";
+   }
+ 
+   // ======================================
+-- 
+2.43.0
+

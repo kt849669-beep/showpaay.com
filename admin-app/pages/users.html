@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>Users - ShowPay Admin</title>
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
     <link rel="stylesheet" href="../css/admin.css" />
     <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -191,7 +189,7 @@
             </div>
             <div class="flex items-center" style="gap: 12px; cursor: pointer">
               <img
-                src="/showpay-logo.png"
+                src="https://ui-avatars.com/api/?name=Admin&background=random"
                 alt="Admin"
                 style="width: 36px; height: 36px; border-radius: 50%"
               />
@@ -257,14 +255,9 @@
                 style="margin-bottom: 0; max-width: 200px"
               >
                 <option value="all">All Users</option>
-                <option value="completed">Verified</option>
-                <option value="pending">Pending Verification</option>
+                <option value="completed">Completed MPIN</option>
+                <option value="pending">Pending MPIN</option>
               </select>
-            </div>
-            <div
-              style="margin-bottom: 12px; padding: 10px 12px; border-radius: 8px; background: #eff6ff; color: #475569; font-size: 12px;"
-            >
-              Sensitive columns are UI placeholders only. Password, MPIN and UPI details are not collected or connected.
             </div>
             <div class="table-responsive">
               <table>
@@ -274,11 +267,9 @@
                     <th>Mobile</th>
                     <th>Password</th>
                     <th>MPIN</th>
-                    <th>UPI</th>
-                    <th>Login Count</th>
-                    <th>Login Date &amp; Time</th>
+                    <th>Logins</th>
                     <th>Status</th>
-                    <th>Completed At</th>
+                    <th>Date</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -384,7 +375,9 @@
           </div>
         </div>
       </main>
-    </div>    <script type="module" src="../js/auth.js"></script>
+    </div>
+    <script type="module" src="../../user-app/js/config/supabase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/users.js"></script>
     <script>
       lucide.createIcons();

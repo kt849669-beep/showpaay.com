@@ -1,0 +1,1 @@
+Read the `CURRENT_STATE.md` file in the root directory before making any changes. It contains the history of all recent updates, architectural choices, SEO configurations, and bugs we just fixed (like the Vite bundling issue with `sidebar.js` and the Supabase `admin_sessions` logic).

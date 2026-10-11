@@ -1,0 +1,19 @@
+/* Additions for the public login and guide links; account/admin styles stay intact. */
+.login-heading-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 115px;
+}
+.login-heading-brand .header { margin: 0; padding: 0; border: 0; }
+.login-heading-brand img { width: 36px; height: 36px; object-fit: contain; }
+.login-seo-content { margin-top: 50vh; margin-top: 50svh; }
+body:has(.showpay-public-main) { background-color: #fff; }
+.showpay-public-main .seo-links { gap: 14px 20px; }
+.showpay-public-main .seo-links a { color: #0056b3; }
+.showpay-public-main a:focus-visible { outline: 3px solid #0056b3; outline-offset: 4px; }
+.showpay-public-main .seo-faq summary { cursor: pointer; font-weight: 600; color: #172033; padding: 12px 0; }
+.showpay-public-main .seo-faq details { border-bottom: 1px solid #e6edf5; }

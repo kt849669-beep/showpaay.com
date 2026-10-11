@@ -1,4 +1,4 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
+import { supabase } from "../../user-app/js/config/supabase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const notificationsList = document.getElementById("notificationsList");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchNotifications() {
     try {
-      const { data: notifications } = await localDb
+      const { data: notifications } = await supabase
         .from("notifications")
         .select("*")
         .order("created_at", { ascending: false })
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isUnread) {
           div.style.cursor = "pointer";
           div.addEventListener("click", async () => {
-            await localDb
+            await supabase
               .from("notifications")
               .update({ is_read: true })
               .eq("id", notif.id);
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mark all as read
   markAllReadBtn.addEventListener("click", async () => {
-    await localDb
+    await supabase
       .from("notifications")
       .update({ is_read: true })
       .eq("is_read", false);
@@ -96,17 +96,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Clear all notifications
   clearAllNotifBtn.addEventListener("click", async () => {
     if (!confirm("Are you sure you want to clear all notifications?")) return;
-    const { data: allNotifs } = await localDb.from("notifications").select("id");
+    const { data: allNotifs } = await supabase.from("notifications").select("id");
     if (allNotifs) {
       for (const n of allNotifs) {
-        await localDb.from("notifications").delete().eq("id", n.id);
+        await supabase.from("notifications").delete().eq("id", n.id);
       }
     }
     fetchNotifications();
   });
 
   // Subscribe to realtime notifications
-  localDb
+  supabase
     .channel("notifications-channel")
     .on("postgres_changes", { event: "INSERT", schema: "public", table: "notifications" }, () => {
       fetchNotifications();

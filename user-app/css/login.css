@@ -74,14 +74,6 @@
   margin-bottom: 0px;
 }
 
-.login-safety-note {
-  margin: 12px 0 0;
-  color: #9ca3af;
-  font-size: 11px;
-  line-height: 1.4;
-  text-align: center;
-}
-
 .register-link-container {
   text-align: center;
   margin-top: 24px;
@@ -97,15 +89,9 @@
   font-weight: 600;
 }
 
-.seo-page-spacer {
-  width: 100%;
-  min-height: clamp(180px, 34vh, 360px);
-  background: #ffffff;
-}
-
 .login-seo-content {
   width: min(820px, calc(100% - 32px));
-  margin: 0 auto 48px;
+  margin: 28px auto 48px;
   padding: clamp(24px, 5vw, 44px);
   background: #ffffff;
   border: 1px solid #e6edf5;
@@ -179,16 +165,9 @@
   background: #f8fbff;
 }
 
-.seo-card svg {
-  width: 22px;
-  height: 22px;
-  margin-bottom: 13px;
-  color: #007bff;
-}
-
-.seo-card h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
+.seo-card h2 {
+  margin-top: 0;
+  font-size: 20px;
 }
 
 .seo-card a,
@@ -220,13 +199,9 @@
 }
 
 @media (max-width: 640px) {
-  .seo-page-spacer {
-    min-height: 32vh;
-  }
-
   .login-seo-content {
     width: min(100% - 20px, 820px);
-    margin-top: 0;
+    margin-top: 16px;
     padding: 22px 18px;
     border-radius: 16px;
   }

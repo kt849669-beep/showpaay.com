@@ -1,4 +1,4 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
+import { supabase } from "../../user-app/js/config/supabase.js";
 import { logActivity } from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slideUploadProgress = document.getElementById("slideUploadProgress");
 
   async function fetchSlides() {
-    const { data: slides } = await localDb
+    const { data: slides } = await supabase
       .from("slider_images")
       .select("*")
       .order("display_order", { ascending: true });
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
           button.textContent = "Deleting...";
           button.disabled = true;
           
-          const { error } = await localDb.from("slider_images").delete().eq("id", id);
+          const { error } = await supabase.from("slider_images").delete().eq("id", id);
           if (error) {
             alert("Failed to delete slide: " + error.message);
             console.error(error);
@@ -81,19 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random().toString(36).substring(2)}_${Date.now()}.${fileExt}`;
 
-      const { error: uploadError } = await localDb.storage
+      const { error: uploadError } = await supabase.storage
         .from("slider_images")
         .upload(fileName, file);
 
       if (uploadError) throw uploadError;
 
-      const { data: publicUrlData } = localDb.storage
+      const { data: publicUrlData } = supabase.storage
         .from("slider_images")
         .getPublicUrl(fileName);
 
       const publicUrl = publicUrlData.publicUrl;
 
-      await localDb.from("slider_images").insert({
+      await supabase.from("slider_images").insert({
         image_url: publicUrl,
         title: "Uploaded Slide",
         display_order: 99,

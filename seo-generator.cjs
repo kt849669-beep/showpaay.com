@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const domain = (process.env.SITE_URL || 'https://showpayy.com').replace(/\/$/, '');
+const domain = 'https://showpayy.com';
 const publicDir = path.join(__dirname, 'public');
 const socialImage = `${domain}/showpay-logo.png`;
 
@@ -34,7 +34,7 @@ const pages = [
     },
     body: `
       <h1>About ShowPay</h1>
-      <p>This standalone project is a mobile-friendly interface demonstration built with HTML, CSS and JavaScript. It uses sample credentials only and is not an official account portal. This page explains the interface, public guides and safe demo workflow.</p>
+      <p>Showpay is a mobile-friendly web application designed for account holders who want to access their payment dashboard quickly and securely. The official <strong>ShowPay login</strong> is available at <strong>showpayy.com</strong>, the only domain you should use to sign in to your Showpay account. This page explains what ShowPay offers, how the Showpay app works, and what to do if you need account assistance.</p>
       
       <h2>What is ShowPay?</h2>
       <p>Showpay—also written as "Show Pay" or searched as "Showpay"—is a web-based payment platform that gives registered users access to a personal account dashboard. Through the dashboard, users can view their account balance, access payment and wallet tools, review transaction history, and follow instructions provided for their account type. The platform is built to work on both desktop and mobile browsers, meaning you do not need to install a Showpay apk to use the core features.</p>
@@ -136,7 +136,7 @@ const pages = [
   {
     filename: 'showpay-guide.html',
     title: 'ShowPay Guides | Complete Help and Support Center',
-    description: 'Explore independent ShowPay interface guides covering the demo login, mobile layout, deposits, USDT and account safety.',
+    description: 'Find official ShowPay guides for account login, mobile app access, deposits, USDT transactions and password recovery.',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
@@ -163,58 +163,6 @@ const pages = [
       
       <p>All the guides on this website follow the same safety principles. Before making any payment, deposit, or withdrawal, confirm you are signed in at <strong>showpayy.com</strong> and not a look-alike domain. Never share your password, OTP, MPIN, or recovery code with any person or website.</p>
     `
-  },
-  {
-    filename: 'how-to-use-showpay.html',
-    title: 'How to Use ShowPay | Login and Account Guide',
-    description: 'Learn how to open ShowPay, sign in and use the account tools displayed in your dashboard.',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      '@id': `${domain}/how-to-use-showpay.html#howto`,
-      url: `${domain}/how-to-use-showpay.html`,
-      name: 'How to use ShowPay'
-    },
-    body: `<h1>How to Use ShowPay</h1><p>Follow this guide to access your ShowPay account and use the tools available in your dashboard.</p>`
-  },
-  {
-    filename: 'how-to-deposit-showpay.html',
-    title: 'How to Deposit on ShowPay | Account Guide',
-    description: 'Review the safe steps for using a deposit option displayed inside your ShowPay account.',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      '@id': `${domain}/how-to-deposit-showpay.html#howto`,
-      url: `${domain}/how-to-deposit-showpay.html`,
-      name: 'How to deposit on ShowPay'
-    },
-    body: `<h1>How to Deposit on ShowPay</h1><p>Use only the deposit method and current instructions displayed inside your own ShowPay account.</p>`
-  },
-  {
-    filename: 'showpay-password-help.html',
-    title: 'ShowPay Password Help | Account Recovery Guide',
-    description: 'Use the ShowPay password recovery guidance and keep your account credentials protected.',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      '@id': `${domain}/showpay-password-help.html#webpage`,
-      url: `${domain}/showpay-password-help.html`,
-      name: 'ShowPay password help'
-    },
-    body: `<h1>ShowPay Password Help</h1><p>Start account recovery only from the ShowPay login page and never share your password, OTP or MPIN.</p>`
-  },
-  {
-    filename: 'showpay-support.html',
-    title: 'ShowPay Support | Account and Transaction Help',
-    description: 'Find ShowPay help for login, account access, deposits, USDT and common transaction questions.',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      '@id': `${domain}/showpay-support.html#webpage`,
-      url: `${domain}/showpay-support.html`,
-      name: 'ShowPay support'
-    },
-    body: `<h1>ShowPay Support</h1><p>Choose the relevant help topic below and verify current information inside your account before taking action.</p>`
   }
 ];
 const extendedContent = {
@@ -374,14 +322,13 @@ for (const page of pages) {
       </div>
     </header>
     <main>
-      <span class="eyebrow">Independent Interface Demo</span>
-      <div class="notice"><strong>Demo notice:</strong> This standalone interface accepts sample credentials only. Never enter a real password, OTP, UPI PIN or recovery code.</div>
+      <span class="eyebrow">ShowPay Help Center</span>
 ${page.body.trim()}
-      <a class="cta" href="/">Open Interface Demo</a>
+      <a class="cta" href="/">ShowPay Login</a>
 ${extendedContent[page.filename] ?? ''}
 ${guideNavigation}
     </main>
-    <footer class="site-footer">Independent interface demo · Not an official account portal · Never enter real credentials.</footer>
+    <footer class="site-footer">ShowPay public help guides · Always verify the current information inside your account.</footer>
   </body>
 </html>
 `;

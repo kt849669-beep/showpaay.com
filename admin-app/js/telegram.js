@@ -1,4 +1,4 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
+import { supabase } from "../../user-app/js/config/supabase.js";
 import { logActivity } from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let telegramId = null;
 
   async function fetchSettings() {
-    const { data: tData } = await localDb
+    const { data: tData } = await supabase
       .from("telegram_popup")
       .select("*")
       .order("created_at", { ascending: false })
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   toggleTelegram.addEventListener("change", async (e) => {
     if (telegramId)
-      await localDb
+      await supabase
         .from("telegram_popup")
         .update({ is_enabled: e.target.checked })
         .eq("id", telegramId);
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .getElementById("saveTelegramBtn")
     .addEventListener("click", async () => {
       if (telegramId) {
-        await localDb
+        await supabase
           .from("telegram_popup")
           .update({ telegram_link: telegramUrlInput.value })
           .eq("id", telegramId);

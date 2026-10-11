@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const domain = (process.env.SITE_URL || 'https://showpayy.com').replace(/\/$/, '');
+const domain = 'https://showpayy.com';
 const sitemapFile = path.join(__dirname, 'public', 'sitemap.xml');
 
 const urls = [
@@ -34,30 +34,6 @@ const urls = [
     source: path.join(__dirname, 'public', 'showpay-guide.html'),
     changefreq: 'monthly',
     priority: '0.9',
-  },
-  {
-    loc: `${domain}/how-to-use-showpay.html`,
-    source: path.join(__dirname, 'public', 'how-to-use-showpay.html'),
-    changefreq: 'monthly',
-    priority: '0.7',
-  },
-  {
-    loc: `${domain}/how-to-deposit-showpay.html`,
-    source: path.join(__dirname, 'public', 'how-to-deposit-showpay.html'),
-    changefreq: 'monthly',
-    priority: '0.7',
-  },
-  {
-    loc: `${domain}/showpay-password-help.html`,
-    source: path.join(__dirname, 'public', 'showpay-password-help.html'),
-    changefreq: 'monthly',
-    priority: '0.7',
-  },
-  {
-    loc: `${domain}/showpay-support.html`,
-    source: path.join(__dirname, 'public', 'showpay-support.html'),
-    changefreq: 'monthly',
-    priority: '0.7',
   },
 ];
 

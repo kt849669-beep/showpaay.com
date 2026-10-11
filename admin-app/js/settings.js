@@ -1,4 +1,4 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
+import { supabase } from "../../user-app/js/config/supabase.js";
 import { logActivity } from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let telegramId = null;
 
   async function fetchSettings() {
-    const { data: vData } = await localDb
+    const { data: vData } = await supabase
       .from("popup_video")
       .select("*")
       .limit(1);
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleVideo.checked = vData[0].is_enabled;
     }
 
-    const { data: tData } = await localDb
+    const { data: tData } = await supabase
       .from("telegram_popup")
       .select("*")
       .limit(1);
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   toggleVideo.addEventListener("change", async (e) => {
     if (videoId) {
-      await localDb
+      await supabase
         .from("popup_video")
         .update({ is_enabled: e.target.checked })
         .eq("id", videoId);
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   toggleTelegram.addEventListener("change", async (e) => {
     if (telegramId) {
-      await localDb
+      await supabase
         .from("telegram_popup")
         .update({ is_enabled: e.target.checked })
         .eq("id", telegramId);

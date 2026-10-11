@@ -2,19 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <base href="/admin-app/pages/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Login - ShowPay</title>
-    <meta name="robots" content="noindex, nofollow, noarchive" />
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
-    <link rel="apple-touch-icon" href="/showpay-logo.png" />
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/login-transition.css" />
+    <link rel="preload" as="image" href="/showpay-brand.jpeg" />
   </head>
   <body>
+    <div id="adminEntry" class="admin-entry" hidden>
+      <div class="admin-entry-stage">
+        <img class="admin-entry-logo" src="/showpay-brand.jpeg" width="144" height="144" alt="ShowPay" />
+        <div class="admin-entry-shadow" aria-hidden="true"></div>
+        <p id="adminEntryStatus" class="admin-entry-status" role="status" aria-live="polite">Signing in…</p>
+        <p class="admin-entry-caption">SHOWPAY ADMIN</p>
+      </div>
+    </div>
     <div class="admin-login-wrapper">
       <div class="admin-login-box">
         <div style="text-align: center; margin-bottom: 24px;">
-          <img src="/showpay-logo.png" alt="ShowPay" width="84" height="84" style="display: block; width: 84px; height: 84px; margin: 0 auto 12px; object-fit: cover; border-radius: 18px; background: #ffffff; box-shadow: 0 8px 25px rgba(23,27,86,0.2);" />
+          <div style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 32px; font-style: italic; margin: 0 auto 12px; box-shadow: 0 8px 25px rgba(59,130,246,0.4);">S</div>
         </div>
         <div class="admin-title">Admin Portal</div>
         <form id="adminLoginForm">
@@ -36,6 +43,9 @@
           <button type="submit" class="admin-btn">Login</button>
         </form>
       </div>
-    </div>    <script type="module" src="../js/login.js"></script>
+    </div>
+
+    <script type="module" src="../../user-app/js/config/supabase.js"></script>
+    <script type="module" src="../js/login.js"></script>
   </body>
 </html>

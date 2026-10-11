@@ -1,0 +1,68 @@
+name: ShowPay Hourly SEO Monitor
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/seo-monitor.yml'
+      - 'seo-monitor/**'
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  id-token: write
+
+concurrency:
+  group: showpay-hourly-seo-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get a short-lived Google read-only token
+        id: google_auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/236413037487/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+          service_account: showpay-seo-agent@showpay-seo-monitor.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/webmasters.readonly
+
+      - name: Run read-only SEO monitor
+        env:
+          SEO_SITE_URL: https://showpayy.com/
+          GSC_ACCESS_TOKEN: ${{ steps.google_auth.outputs.access_token }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: node seo-monitor/run.mjs
+
+      - name: Add report to workflow summary
+        if: always()
+        run: cat seo-monitor/output/summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-report-${{ github.run_id }}
+          path: seo-monitor/output/
+          retention-days: 30
+
+      - name: Create, update, or close alert issue
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node seo-monitor/github-alert.mjs

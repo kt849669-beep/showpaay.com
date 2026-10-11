@@ -1,0 +1,17 @@
+# /home → home page
+/home                       /user-app/pages/home.html         200
+# /admin → admin login
+/admin                      /admin-app/pages/login.html       200
+
+# Clean URLs — 200 rewrites serve content at clean URL (no loop)
+/showpay-apk                /showpay-apk.html                 200
+/showpay-usdt               /showpay-usdt.html                200
+/homepages                  /homepages.html                   200
+/about-showpay              /about-showpay.html               200
+/showpay-guide              /showpay-guide.html               200
+
+# /login → root
+/login                      /                                 301
+
+# 404 fallback
+/*                          /404.html                         404

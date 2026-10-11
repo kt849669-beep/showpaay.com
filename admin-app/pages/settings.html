@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>Settings - ShowPay Admin</title>
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
     <link rel="stylesheet" href="../css/admin.css" />
     <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -190,7 +188,7 @@
             </div>
             <div class="flex items-center" style="gap: 12px; cursor: pointer">
               <img
-                src="/showpay-logo.png"
+                src="https://ui-avatars.com/api/?name=Admin&background=random"
                 alt="Admin"
                 style="width: 36px; height: 36px; border-radius: 50%"
               />
@@ -239,7 +237,9 @@
           </div>
         </div>
       </main>
-    </div>    <script type="module" src="../js/auth.js"></script>
+    </div>
+    <script type="module" src="../../user-app/js/config/supabase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/settings.js"></script>
     <script>
       lucide.createIcons();

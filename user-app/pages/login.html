@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <base href="/user-app/pages/" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
@@ -11,8 +10,8 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <!-- Primary Title & Description -->
-    <title>ShowPay UI Demo | Mobile Account Interface Preview</title>
-    <meta name="description" content="Explore a mobile-friendly ShowPay interface demo with sample login, dashboard and public help pages. Never enter real account credentials.">
+    <title>ShowPay Login | ShowPay App &amp; Secure Account Access</title>
+    <meta name="description" content="Access the ShowPay login at showpayy.com. Sign in to the Show Pay web app and find ShowPay APK, USDT, password and customer support help.">
 
     <!-- Crawling Instructions -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -20,8 +19,8 @@
 
     <!-- Google Site Name & Open Graph (For Social & SERP Name) -->
     <meta property="og:site_name" content="ShowPay">
-    <meta property="og:title" content="ShowPay UI Demo | Mobile Interface Preview">
-    <meta property="og:description" content="Explore a mobile-friendly interface demo using sample credentials only.">
+    <meta property="og:title" content="ShowPay Login | ShowPay App &amp; Secure Account Access">
+    <meta property="og:description" content="Access the ShowPay login, use the mobile-friendly web app and find account, APK, password and USDT help.">
     <meta property="og:url" content="https://showpayy.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://showpayy.com/showpay-logo.png" />
@@ -29,8 +28,8 @@
 
     <!-- Twitter Tags -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="ShowPay UI Demo | Mobile Interface Preview" />
-    <meta name="twitter:description" content="Explore a mobile-friendly interface demo using sample credentials only." />
+    <meta name="twitter:title" content="ShowPay Login | ShowPay App &amp; Secure Account Access" />
+    <meta name="twitter:description" content="Access the ShowPay login, use the mobile-friendly web app and find account, APK, password and USDT help." />
     <meta name="twitter:image" content="https://showpayy.com/showpay-logo.png" />
 
     <!-- Logo / Favicon -->
@@ -42,6 +41,7 @@
     <link rel="preload" href="../css/login.css" as="style" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="/showpay-seo.css" />
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
@@ -57,7 +57,7 @@
           "url": "https://showpayy.com/",
           "name": "ShowPay",
           "alternateName": ["Showpay", "Show pay"],
-          "description": "A standalone mobile interface demonstration using sample credentials only."
+          "description": "ShowPay account login and mobile-friendly web application."
         },
         {
           "@type": "Organization",
@@ -68,6 +68,9 @@
             "@type": "ImageObject",
             "url": "https://showpayy.com/showpay-logo.png"
           },
+          "sameAs": [
+            "https://t.me/bolinshowpay1"
+          ],
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "Customer Support",
@@ -78,8 +81,8 @@
           "@type": "WebPage",
           "@id": "https://showpayy.com/#webpage",
           "url": "https://showpayy.com/",
-          "name": "ShowPay UI Demo",
-          "description": "Preview a mobile account interface without entering real account credentials.",
+          "name": "ShowPay Login",
+          "description": "Sign in to ShowPay to access the account dashboard and available payment tools.",
           "isPartOf": { "@id": "https://showpayy.com/#website" },
           "about": { "@id": "https://showpayy.com/#organization" },
           "mainEntity": { "@id": "https://showpayy.com/#webapp" }
@@ -92,7 +95,7 @@
           "url": "https://showpayy.com/",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "description": "A mobile-friendly interface demonstration that accepts sample credentials only."
+          "description": "ShowPay is a mobile-friendly web application for account access and the payment tools available to signed-in users."
         },
         {
           "@type": "FAQPage",
@@ -146,8 +149,12 @@
     </script>
   </head>
   <body>
+    <main class="showpay-public-main">
     <div class="login-container">
+      <div class="login-heading-brand">
+      <img src="/showpay-brand.jpeg" alt="ShowPay" width="36" height="36" />
       <h1 class="header">Login</h1>
+      </div>
 
       <form id="loginForm">
         <div class="form-group">
@@ -165,7 +172,7 @@
         <div class="form-group">
           <i data-lucide="lock" class="input-icon"></i>
           <input
-            type="password"
+            type="text"
             id="password"
             class="form-control"
             placeholder="Enter Password"
@@ -174,7 +181,7 @@
         </div>
 
         <div class="forgot-password">
-          <a href="/showpay-password-help.html">Forget Password?</a>
+          <a href="https://app-web.showpayweb.com/forgetPassword">Forget Password?</a>
         </div>
 
         <div
@@ -194,50 +201,70 @@
           </button>
         </div>
 
-        <p class="login-safety-note">
-          Interface preview only. Do not enter real credentials. No real transactions are authorized here.
-        </p>
+        <div class="register-link-container">
+          <span>Don't have an account?</span> <a href="https://app-web.showpay-web.com/regist?code=2invite5p6">Register</a>
+        </div>
       </form>
     </div>
 
-    <div class="seo-page-spacer" aria-hidden="true"></div>
-
-    <section class="login-seo-content" aria-labelledby="showpayGuideTitle">
-      <span class="seo-kicker">ShowPay Help Center</span>
-      <h2 id="showpayGuideTitle">ShowPay Guide</h2>
+    <section class="login-seo-content" aria-labelledby="showpay-access-title">
+      <span class="seo-kicker">ShowPay account access</span>
+      <h2 id="showpay-access-title">What is ShowPay?</h2>
       <p class="seo-summary">
-        Find clear help for ShowPay login, account access and USDT basics. Choose a guide below without interrupting the clean login experience above.
+        <strong>ShowPay</strong>—also searched as “Showpay” or “Show pay”—is a
+        mobile-friendly web application for account access and the payment tools
+        available to signed-in users. Existing users can use the login form above;
+        new visitors can review the guides below before continuing.
       </p>
+
+      <h2>How do I access the ShowPay login?</h2>
+      <p>
+        Open <strong>https://showpayy.com/</strong>, check the complete address and
+        enter the phone number and password associated with your own account. The
+        visible form remains the direct ShowPay login. If access fails, use the
+        Forget Password option displayed with the form instead of following an
+        unknown recovery link.
+      </p>
+      <ol class="seo-steps">
+        <li>Confirm the address bar shows <strong>showpayy.com</strong>.</li>
+        <li>Enter your registered phone number and password.</li>
+        <li>Select LOG IN and follow only the instructions shown in your account.</li>
+      </ol>
 
       <div class="seo-card-grid">
         <article class="seo-card">
-          <i data-lucide="book-open" aria-hidden="true"></i>
-          <h3>ShowPay Guide</h3>
-          <p>Start with the complete ShowPay help hub and find the right guide for your task.</p>
-          <a href="/showpay-guide.html">Read ShowPay guide</a>
+          <h2>Can I use the ShowPay app on mobile?</h2>
+          <p>
+            Yes. The ShowPay web app works in a current mobile browser. This website
+            does not currently provide a direct APK file, so avoid downloads from
+            unverified messages or websites.
+          </p>
+          <a href="/showpay-apk">Read the ShowPay app and APK guide</a>
         </article>
-
         <article class="seo-card">
-          <i data-lucide="log-in" aria-hidden="true"></i>
-          <h3>Login Help</h3>
-          <p>Review sign-in steps, password help and simple account-access checks.</p>
-          <a href="/showpay-password-help.html">Open login help</a>
-        </article>
-
-        <article class="seo-card">
-          <i data-lucide="circle-dollar-sign" aria-hidden="true"></i>
-          <h3>USDT Guide</h3>
-          <p>Understand network matching, wallet-address checks and transaction status.</p>
-          <a href="/showpay-usdt.html">Read USDT guide</a>
+          <h2>Where can I find ShowPay USDT help?</h2>
+          <p>
+            Before using an available USDT feature, verify the network, complete
+            wallet address, amount and transaction status inside your own account.
+          </p>
+          <a href="/showpay-usdt">Read the ShowPay USDT guide</a>
         </article>
       </div>
 
-      <nav class="seo-links" aria-label="More ShowPay help">
-        <a href="/how-to-use-showpay.html">How to use ShowPay</a>
-        <a href="/showpay-support.html">ShowPay support</a>
-        <a href="/showpay-apk.html">App access guide</a>
+      <aside class="seo-takeaway" aria-label="Important ShowPay account reminder">
+        <strong>Important:</strong> never share your ShowPay password, OTP, MPIN or
+        recovery code. Account features, limits and transaction instructions can
+        change, so confirm the current information after signing in.
+      </aside>
+      <nav class="seo-links" aria-label="ShowPay guides">
+        <a href="/showpay-guide.html">ShowPay guides</a>
+        <a href="/about-showpay.html">About ShowPay</a>
+        <a href="/showpay-apk">ShowPay app and APK information</a>
+        <a href="/showpay-usdt">ShowPay USDT to INR information</a>
+        <a href="/showpay-support.html">Support</a>
       </nav>
     </section>
+    </main>
 
     <!-- Limit Popup -->
     <div
@@ -254,7 +281,10 @@
         justify-content: center;
         align-items: center;
       "
-    ></div>    <script type="module" src="../js/auth/login.js"></script>
+    ></div>
+
+    <script type="module" src="../js/config/supabase.js"></script>
+    <script type="module" src="../js/auth/login.js"></script>
     <script>
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";

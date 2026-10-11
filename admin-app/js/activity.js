@@ -1,10 +1,10 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
+import { supabase } from "../../user-app/js/config/supabase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const logsTableBody = document.getElementById("logsTableBody");
   async function fetchLogs() {
     try {
-      const { data: logs } = await localDb
+      const { data: logs } = await supabase
         .from("activity_logs")
         .select("*")
         .order("created_at", { ascending: false })

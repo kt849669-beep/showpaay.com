@@ -1,4 +1,4 @@
-import { localDb } from "../../user-app/js/config/local-db.js";
+import { supabase } from "../../user-app/js/config/supabase.js";
 import { logActivity } from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bannerUploadProgress = document.getElementById("bannerUploadProgress");
 
   async function fetchBanners() {
-    const { data: banners } = await localDb
+    const { data: banners } = await supabase
       .from("banners")
       .select("*")
       .order("display_order", { ascending: true });
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".banner-toggle").forEach((toggle) => {
       toggle.addEventListener("change", async (e) => {
         const id = e.target.getAttribute("data-id");
-        await localDb
+        await supabase
           .from("banners")
           .update({ is_enabled: e.target.checked })
           .eq("id", id);
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", async (e) => {
         if (!confirm("Delete this banner?")) return;
         const id = e.currentTarget.getAttribute("data-id");
-        await localDb.from("banners").delete().eq("id", id);
+        await supabase.from("banners").delete().eq("id", id);
         fetchBanners();
         logActivity("Banner Deleted", `Deleted banner ID: ${id}`);
       });
@@ -77,17 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random().toString(36).substring(2)}_${Date.now()}.${fileExt}`;
 
-      const { error: uploadError } = await localDb.storage
+      const { error: uploadError } = await supabase.storage
         .from("banners")
         .upload(fileName, file);
 
       if (uploadError) throw uploadError;
 
-      const { data: publicUrlData } = localDb.storage
+      const { data: publicUrlData } = supabase.storage
         .from("banners")
         .getPublicUrl(fileName);
 
-      await localDb.from("banners").insert({
+      await supabase.from("banners").insert({
         image_url: publicUrlData.publicUrl,
         title: bannerTitle.value || "Banner",
         is_enabled: true,

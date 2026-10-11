@@ -19,20 +19,9 @@
 }
 
 .logo-text {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
   font-size: 22px;
   font-weight: 700;
-  color: #171b56;
-}
-
-.logo-text img {
-  width: 42px;
-  height: 42px;
-  border-radius: 9px;
-  object-fit: cover;
-  background: #ffffff;
+  color: #007bff;
 }
 
 .chat-icon {

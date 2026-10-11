@@ -1,3 +1,4 @@
+import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import fs from 'fs';
 
@@ -29,48 +30,13 @@ function getHtmlFiles(dir, fileList = {}) {
   return fileList;
 }
 
-export default () => {
-  const localRoutes = {
-    '/': '/user-app/pages/login.html',
-    '/login': '/user-app/pages/login.html',
-    '/home': '/user-app/pages/home.html',
-    '/complete': '/user-app/pages/complete.html',
-    '/admin': '/admin-app/pages/login.html',
-    '/showpay-apk': '/showpay-apk.html',
-    '/showpay-usdt': '/showpay-usdt.html',
-    '/homepages': '/homepages.html',
-    '/showpay/homepages': '/showpay/homepages/index.html',
-  };
-
-  const routePlugin = {
-    name: 'showpay-local-routes',
-    configureServer(server) {
-      server.middlewares.use((req, res, next) => {
-        const pathname = new URL(req.url || '/', 'http://localhost').pathname;
-        if (!localRoutes[pathname]) return next();
-        req.url = localRoutes[pathname];
-        next();
-      });
-    },
-    configurePreviewServer(server) {
-      server.middlewares.use((req, res, next) => {
-        const pathname = new URL(req.url || '/', 'http://localhost').pathname;
-        if (!localRoutes[pathname]) return next();
-        req.url = localRoutes[pathname];
-        next();
-      });
-    },
-  };
-
+export default defineConfig(() => {
   return {
-    plugins: [routePlugin],
+    // Top-level plugins array required by Cloudflare Wrangler / @cloudflare/vite-plugin
+    plugins: [],
     server: {
       port: 3000,
       host: '0.0.0.0'
-    },
-    preview: {
-      host: '0.0.0.0',
-      port: 3000
     },
     // This is a standalone plain-CSS project. Do not inherit a PostCSS config
     // from a parent workspace when the repository is checked out inside one.
@@ -85,4 +51,4 @@ export default () => {
       }
     }
   };
-};
+});

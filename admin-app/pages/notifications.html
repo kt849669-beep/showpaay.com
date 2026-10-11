@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>Notifications - ShowPay Admin</title>
-    <link rel="icon" type="image/png" href="/showpay-logo.png" />
     <link rel="stylesheet" href="../css/admin.css" />
     <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
   </head>
@@ -54,7 +52,7 @@
               <i data-lucide="search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #6b7280; width: 16px; height: 16px;"></i>
             </div>
             <div class="flex items-center" style="gap: 12px; cursor: pointer">
-              <img src="/showpay-logo.png" alt="Admin" style="width: 36px; height: 36px; border-radius: 50%" />
+              <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="Admin" style="width: 36px; height: 36px; border-radius: 50%" />
               <div class="admin-profile-text">
                 <div style="font-size: 14px; font-weight: 600">Admin</div>
                 <div style="font-size: 12px; color: #6b7280">Super Admin</div>
@@ -75,7 +73,9 @@
           </div>
         </div>
       </main>
-    </div>    <script type="module" src="../js/auth.js"></script>
+    </div>
+    <script type="module" src="../../user-app/js/config/supabase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/notifications.js"></script>
     <script>lucide.createIcons();</script>
     <script type="module" src="../js/sidebar.js"></script>

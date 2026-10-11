@@ -193,11 +193,6 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
-.topbar-right img {
-  object-fit: cover;
-  background: #ffffff;
-}
 @media (max-width: 768px) {
   .topbar-right .search-bar,
   .topbar-right .admin-profile-text {
@@ -327,4 +322,197 @@ input:checked + .slider:before {
   padding: 10px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
+}
+
+/* ShowPay 3D admin theme. Presentation only: keep existing visibility, routes,
+   sidebar classes, form controls, modal positioning and JavaScript untouched. */
+:root {
+  --sp-ink: #182340;
+  --sp-muted: #64718b;
+  --sp-blue: #3455d6;
+  --sp-line: #e2e8f3;
+  --sp-lift: 0 2px 2px #16244c05, 0 12px 28px #2335680d, inset 0 1px 0 #fff;
+}
+body {
+  color: var(--sp-ink);
+  background: #edf1f8;
+  background-image: radial-gradient(ellipse at 90% 0%, #dfe8ff 0%, transparent 48%),
+    radial-gradient(ellipse at 0% 90%, #def2ee 0%, transparent 45%);
+}
+.sidebar {
+  background: linear-gradient(155deg, #232655 0%, #171d3b 58%, #121830 100%);
+  border-right: 1px solid #ffffff12;
+  box-shadow: 18px 0 60px #12183026, inset -1px 0 0 #ffffff09;
+}
+.sidebar-header { border-bottom-color: #ffffff12; min-height: 94px; }
+.sidebar-header > div:first-child,
+.admin-login-box > div:first-child > div {
+  background: #fff url('/showpay-brand.jpeg') center / 88% no-repeat !important;
+  color: transparent !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 0 #0c1233, 0 8px 18px #0003, inset 0 1px 0 #fff !important;
+  flex-shrink: 0;
+}
+.sidebar-logo-text { letter-spacing: .04em; }
+.sidebar-logo-text > div:last-child { color: #adb8d9 !important; margin-top: 5px; }
+.nav-links { padding: 18px 12px; scrollbar-width: thin; scrollbar-color: #4b5279 transparent; }
+.nav-link {
+  min-height: 46px;
+  color: #bbc4e0;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  transition: background .18s, box-shadow .18s, border-color .18s;
+}
+.nav-link:hover { background: #ffffff0d; border-color: #ffffff12; }
+.nav-link.active {
+  color: #fff;
+  background: linear-gradient(135deg, #6473ed, #4351c6);
+  border-color: #8994ff70;
+  box-shadow: inset 0 1px 0 #ffffff40, 0 3px 0 #111737, 0 8px 18px #0d123540;
+}
+.nav-link svg { width: 18px; height: 18px; flex-shrink: 0; margin-right: 12px; opacity: .85; }
+.sidebar-footer { border-top-color: #ffffff12 !important; background: #ffffff03; }
+.sidebar-footer > div:first-child { background: #ffffff0f !important; box-shadow: inset 0 1px 0 #ffffff15; }
+.sidebar-footer-text > div:last-child { color: #adb8d9 !important; }
+.sidebar-overlay { background: #111a3c80; backdrop-filter: blur(4px); }
+.main-content { min-width: 0; }
+.topbar {
+  margin: 20px 24px 0;
+  padding: 18px 22px;
+  gap: 16px;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #ffffffed, #f7f9ffed);
+  box-shadow: var(--sp-lift);
+}
+.topbar h2 { font-weight: 700; letter-spacing: -.035em; color: #20284b; }
+#sidebarToggle {
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(#fff, #edf1fb) !important;
+  border: 1px solid #e3e8f5 !important;
+  border-radius: 12px;
+  box-shadow: 0 3px 0 #dde3f1, inset 0 1px 0 #fff;
+  flex-shrink: 0;
+}
+.topbar .search-bar input { background: #eef2f9; border-color: #e3e8f2 !important; color: var(--sp-ink); }
+.topbar-right img { box-shadow: 0 0 0 4px #fff, 0 3px 12px #253d7620; }
+.content-body { padding: 26px 24px 32px; scrollbar-width: thin; scrollbar-color: #c5cee2 transparent; }
+.card {
+  background: linear-gradient(130deg, #fff 0%, #fcfdff 100%);
+  border: 1px solid #fff;
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: var(--sp-lift);
+  margin-bottom: 24px;
+}
+.card-title { color: #20284b; font-weight: 700; letter-spacing: -.025em; gap: 16px; }
+.card:has(> div > [id^="stat"]) { gap: 18px !important; background: transparent; border: 0; box-shadow: none; padding: 0; }
+.card > div:has(> [id^="stat"]) {
+  position: relative;
+  overflow: hidden;
+  text-align: left !important;
+  padding: 26px !important;
+  min-height: 172px;
+  border: 1px solid #fff;
+  border-radius: 20px !important;
+  background: linear-gradient(135deg, #fff 0%, #f8faff 100%) !important;
+  box-shadow: 0 5px 0 #dce3f080, 0 14px 30px #2335680c, inset 0 1px 0 #fff;
+}
+.card > div:has(> [id^="stat"])::before {
+  content: '';
+  display: block;
+  width: 36px; height: 36px;
+  margin-bottom: 20px;
+  border-radius: 11px;
+  background: linear-gradient(145deg, #8393ff, #4654cb);
+  border: 1px solid #9ba7ff;
+  box-shadow: inset 0 1px 1px #ffffffa0, 3px 4px 0 #d9dff8, 4px 7px 12px #4c5cc52b;
+  transform: rotate(-9deg);
+}
+.card > div:has(> [id^="stat"])::after {
+  content: ''; position: absolute; width: 110px; height: 110px;
+  border: 20px solid #a7b6e70d; border-radius: 30px; right: -30px; top: -28px;
+  transform: rotate(25deg); pointer-events: none;
+}
+.card [id^="stat"] { font-size: 30px !important; letter-spacing: -.04em; color: #29365b !important; line-height: 1.25; }
+.card #statLatestLogin, .card #statTelegramStatus { font-size: 19px !important; letter-spacing: -.02em; }
+.card [id^="stat"] + div { color: #68758e !important; font-size: 12px !important; font-weight: 500; margin-top: 8px; }
+.card > div:has(> #statPendingUsers)::before { background: linear-gradient(145deg, #ffd187, #e5a64e); border-color: #ffe0ae; box-shadow: inset 0 1px 1px #fffc, 3px 4px 0 #f4e6d4, 4px 7px 12px #e5a64e20; }
+.card > div:has(> #statCompletedUsers)::before,
+.card > div:has(> #statTelegramStatus)::before { background: linear-gradient(145deg, #7edbc6, #319b85); border-color: #b6eddf; box-shadow: inset 0 1px 1px #fffc, 3px 4px 0 #d5ede6, 4px 7px 12px #319b8520; }
+.card > div:has(> #statTodayLogins)::before,
+.card > div:has(> #statTotalSliders)::before { background: linear-gradient(145deg, #c39af5, #8860c4); border-color: #d9bafc; box-shadow: inset 0 1px 1px #fffc, 3px 4px 0 #e8dff5, 4px 7px 12px #8860c420; }
+.card > div:has(> #statTotalVideos)::before { background: linear-gradient(145deg, #f7a5af, #d3687e); border-color: #ffcad1; box-shadow: inset 0 1px 1px #fffc, 3px 4px 0 #f4dfe5, 4px 7px 12px #d3687e20; }
+.admin-input, .form-group input, .content-body select, .content-body textarea {
+  color: var(--sp-ink); background: #f7f9fd;
+  border: 1px solid #dce3ef; border-radius: 12px;
+  padding: 12px 14px; box-shadow: inset 0 2px 4px #23356804;
+}
+.admin-input::placeholder, .form-group input::placeholder { color: #6c7890; }
+.admin-input:focus, .form-group input:focus, .content-body textarea:focus {
+  background: #fff; border-color: #6474df; outline: 2px solid #6474df20; outline-offset: 2px;
+}
+.admin-btn {
+  background: linear-gradient(135deg, #5368dc, #344bb7);
+  border: 1px solid #ffffff25;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 #ffffff30, 0 3px 0 #243a8b, 0 8px 16px #3455d61c;
+  min-height: 42px;
+  transition: box-shadow .18s, filter .18s;
+}
+.admin-btn:hover { background: linear-gradient(135deg, #5368dc, #344bb7); filter: brightness(1.06); box-shadow: inset 0 1px 0 #ffffff30, 0 2px 0 #243a8b, 0 5px 12px #3455d620; }
+.admin-btn:active { box-shadow: inset 0 2px 4px #0002, 0 1px 0 #243a8b; }
+.admin-btn:disabled { opacity: .65; }
+button:focus-visible, a:focus-visible { outline: 3px solid #7791ff; outline-offset: 3px; }
+.table-responsive { border: 1px solid var(--sp-line); border-radius: 16px; overflow-x: auto; }
+th { background: #f1f4fb; color: #556380; font-size: 11px; font-weight: 700; letter-spacing: .055em; text-transform: uppercase; padding: 15px 14px; }
+td { padding: 16px 14px; border-bottom-color: #edf0f7; font-size: 13px; }
+tbody tr { transition: background .15s; }
+tbody tr:hover { background: #f4f7ff; }
+.status-badge { padding: 6px 10px; font-weight: 600; box-shadow: inset 0 1px 0 #ffffffa0; }
+.status-pending { background: #fff2d8; color: #885108; }
+.status-completed { background: #dcf4e9; color: #166349; }
+input[type="checkbox"] { accent-color: #5368dc; }
+.slider { box-shadow: inset 0 2px 4px #0001; }
+.slider::before { box-shadow: 0 2px 4px #0002; }
+input:checked + .slider { background: #5368dc; }
+.admin-login-wrapper {
+  padding: 32px 20px;
+  background: radial-gradient(ellipse at 18% 12%, #555caa66, transparent 45%),
+    radial-gradient(ellipse at 85% 88%, #277c8066, transparent 40%), linear-gradient(145deg, #1c2043, #10172d);
+}
+.admin-login-box {
+  padding: 44px 36px;
+  max-width: 420px;
+  background: linear-gradient(145deg, #fff, #f4f6fd);
+  border: 1px solid #ffffffa0;
+  border-radius: 28px;
+  box-shadow: 0 8px 0 #0b112b, 0 30px 70px #03091e80, inset 0 1px 0 #fff;
+}
+.admin-login-box > div:first-child > div { width: 68px !important; height: 68px !important; box-shadow: 0 5px 0 #d9e0f1, 0 14px 24px #253d7620 !important; }
+.admin-title { font-size: 27px; color: #20284b; letter-spacing: -.04em; margin-bottom: 30px; }
+.admin-login-box .admin-input { padding: 15px 16px; margin-bottom: 18px; }
+.admin-login-box .admin-btn { padding: 15px; margin-top: 6px; }
+@media (max-width: 768px) {
+  .topbar { margin: 12px 12px 0; border-radius: 16px; padding: 14px; gap: 10px; }
+  .topbar h2 { font-size: 18px !important; }
+  .content-body { padding: 18px 12px 24px; }
+  .card { padding: 18px; border-radius: 18px; }
+  .card-title.flex { flex-wrap: wrap; }
+  .card-title > div { display: flex; flex-wrap: wrap; gap: 10px; }
+  .card-title .admin-btn { margin-right: 0 !important; }
+  .card > .flex:has(> .admin-input) { flex-wrap: wrap; }
+  .card > .flex > .admin-input { flex: 1 1 180px; max-width: 100% !important; }
+  .card:has(> div > [id^="stat"]) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px !important; }
+  .card > div:has(> [id^="stat"]) { padding: 18px !important; min-height: 170px; border-radius: 16px !important; }
+  .card [id^="stat"] { font-size: 26px !important; overflow-wrap: anywhere; }
+  .card #statLatestLogin, .card #statTelegramStatus { font-size: 16px !important; }
+  .admin-login-box { padding: 34px 24px; border-radius: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-link, .admin-btn, .main-content, .sidebar, tbody tr, .slider, .slider::before { transition: none; }
 }
