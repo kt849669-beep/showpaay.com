@@ -43,7 +43,19 @@ test('public guides, sitemap and query-preserving aliases retain the production 
   const sitemap = await request('/sitemap.xml');
   assert.equal(sitemap.status, 200);
   assert.match(sitemap.body, /https:\/\/showpayy\.com\//);
-  assert.equal((await request('/login?source=test')).headers.location, '/?source=test');
+  const login = await request('/login?source=test');
+  assert.equal(login.status, 200);
+  assert.match(login.body, /id="loginBtn"/);
+  assert.doesNotMatch(login.body, /<section class="login-seo-content"/);
+  const landing = await request('/');
+  assert.match(landing.body, /Show Pay app\./);
+  assert.match(landing.body, /https:\/\/showpayy\.com\/login/);
+  assert.doesNotMatch(landing.body, /showpaay\.online/);
+  for (const route of ['/privacy-policy.html', '/terms.html']) {
+    const page = await request(route);
+    assert.equal(page.status, 200);
+    assert.ok(sitemap.body.includes('https://showpayy.com' + route));
+  }
 });
 test('preview responses are noindex and HEAD has no body', async () => {
   for (const route of ['/', '/showpay-guide.html']) assert.equal((await request(route, { host: 'preview.example.test' })).headers['x-robots-tag'], 'noindex, nofollow');
@@ -89,3 +101,4 @@ test('production entry point listens on the hosting-assigned PORT', async t => {
   const response = await fetch(`http://127.0.0.1:${assigned}/healthz`);
   assert.equal(response.status, 200);
 });
+
