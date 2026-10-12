@@ -14,7 +14,7 @@
   padding: 10px 0;
   font-size: 20px;
   font-weight: 600;
-  color: #007bff;
+  color: #0088f5;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 115px;
 }
@@ -42,7 +42,7 @@
   width: 100%;
   padding: 16px 16px 16px 45px;
   border: none;
-  background-color: #f8f9fb;
+  background-color: #f8faf9;
   border-radius: 12px;
   font-size: 15px;
   outline: none;
@@ -63,7 +63,7 @@
 }
 
 .forgot-password a {
-  color: #007bff;
+  color: #4088df;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -72,6 +72,16 @@
 .login-btn-container {
   margin-top: 135px;
   margin-bottom: 0px;
+}
+
+/* Original ShowPay user login palette. */
+.login-container .btn-primary {
+  background-color: #80c0fe;
+  color: #ffffff;
+}
+
+.login-container .btn-primary:hover {
+  background-color: #80c0fe;
 }
 
 .register-link-container {
@@ -84,7 +94,7 @@
 }
 
 .register-link-container a {
-  color: #007bff; /* matching page theme blue */
+  color: #4088df; /* matching page theme blue */
   text-decoration: none;
   font-weight: 600;
 }
