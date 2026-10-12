@@ -84,6 +84,11 @@
   background-color: #80c0fe;
 }
 
+/* Match the supplied button color when the required login fields are filled. */
+.login-container #loginForm:valid #loginBtn {
+  background-color: #0381fc;
+}
+
 .register-link-container {
   text-align: center;
   margin-top: 24px;
