@@ -46,3 +46,8 @@ This file serves as memory for AI agents. When a new conversation starts, read t
 - Static screenshot examples and calculator use a reference rate, not live quotes or guaranteed returns.
 - Existing public guides stay reachable to preserve their URLs. Search Console submission requires the owner's verified property.
 
+## Original logo and Search Console (October 12, 2026)
+- Google domain property sc-domain:showpayy.com was verified for the owner-approved Google account. The existing live sitemap was accepted with 11 discovered pages; homepage live test and indexing request succeeded. Keep the Google DNS TXT verification record.
+- The owner supplied the original 640x640 SHOWPAY JPEG. apply-branding.cjs runs after homepage finalization and uses that artwork for stable favicon URLs, app icons, Open Graph/Twitter previews and Organization.logo. It updates both static HTML and the Node document map, including the image sitemap.
+- Logo metadata changes are prepared for the GoDaddy release. Live deployment and recrawl of these new assets must be verified after GoDaddy step-up authentication succeeds; an accepted indexing request is not proof of indexing or rankings.
+
