@@ -66,7 +66,12 @@ for (const [route, filename] of Object.entries(routes)) {
   documents[route] = fs.readFileSync(path.join(dist, filename), 'utf8');
 }
 const updatedRoutes = new Set(['/', '/showpay-guide.html', ...help.map(([filename]) => `/${filename}`)]);
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', ...Object.keys(routes)].map(route => `  <url><loc>${origin}${route}</loc>${updatedRoutes.has(route) ? `<lastmod>${changedDate}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
+const sitemapEntries = ['/', ...Object.keys(routes)].map(route => {
+  const lastmod = route === '/' ? '2026-10-14' : updatedRoutes.has(route) ? changedDate : '';
+  const logo = route === '/' ? `<image:image><image:loc>${origin}/showpay-logo.png</image:loc></image:image>` : '';
+  return `  <url><loc>${origin}${route}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}${logo}</url>`;
+});
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${sitemapEntries.join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
 const routingSource = fs.readFileSync(path.join(root, 'scripts', 'cloudflare-seo-worker.js'), 'utf8');
 const orbitSource = fs.readFileSync(path.join(root, 'scripts', 'orbit-admin-api.js'), 'utf8').replace(/^export /gm, '');
